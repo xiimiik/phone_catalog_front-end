@@ -1,6 +1,6 @@
 {
-  "name": "phone-catalog_front-end",
-  "homepage": "https://fe-aug22-ta-y-take.github.io/phone-catalog_front-end",
+  "name": "phone_catalog_front-end",
+  "homepage": "https://fe-aug22-ta-y-take.github.io/phone_catalog_front-end",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

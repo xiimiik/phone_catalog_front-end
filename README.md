@@ -1,1 +1,1 @@
-[DEMO LINK](https://fe-aug22-ta-y-take.github.io/phone-catalog_front-end)
+[DEMO LINK](https://fe-aug22-ta-y-take.github.io/phone_catalog_front-end)
