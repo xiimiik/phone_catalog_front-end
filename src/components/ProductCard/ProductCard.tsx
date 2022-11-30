@@ -1,8 +1,8 @@
-import img from '../assets/img/Apple.png';
-import s from './ProductCard.module.scss';
+import img from "../../assets/img/Apple.png";
+import s from "./ProductCard.module.scss";
 
-import { Button } from '../Button';
-import { Favorite } from '../Favorite/Favorite';
+import { Button } from "../Button";
+import { Favorite } from "../Favorite/Favorite";
 
 export const ProductCard = () => {
   return (

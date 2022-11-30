@@ -1,9 +1,7 @@
-import {ProductCard} from './ProductCard';
+import { ProductCard } from "./components/ProductCard";
 
 function App() {
-  return (
-    <ProductCard />
-  );
+  return <ProductCard />;
 }
 
 export default App;
