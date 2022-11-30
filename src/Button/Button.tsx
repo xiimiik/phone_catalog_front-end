@@ -1,12 +1,17 @@
+import { useState } from 'react';
+
 import s from './Button.module.scss';
 import cn from 'classnames';
 
-const selected = false;
+export const Button = () => {
+  const [select, setSelect] = useState(false);
 
-export const Button = () => (
-  <button className={cn(s.btn, {
-    [s['btn_selected']]: selected
-  })}>
-    { selected ? 'Added' : 'Add to cart' }
-  </button>
-);
+  return (
+    <button
+      onClick={() => setSelect(selected => !selected)}
+      className={cn(s.btn, {
+      [s['btn_selected']]: select
+    })}>
+      { select ? 'Added' : 'Add to cart' }
+    </button>
+)};

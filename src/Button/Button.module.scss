@@ -2,6 +2,7 @@
 
 .btn {
   width: 160px;
+  height: 40px;
   padding: 10px 40px;
   color: $white;
   background-color: $accent;
@@ -11,6 +12,7 @@
   font-weight: 700;
   text-align: center;
 
+  border: 1px solid inherit;
   border-radius: $radius;
 
   transition: box-shadow 0.2s ease;
