@@ -75,4 +75,10 @@
     color: $secondary;
     font-weight: 600;
   }
+
+  &__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

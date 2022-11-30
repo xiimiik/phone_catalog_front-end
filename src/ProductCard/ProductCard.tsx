@@ -35,7 +35,7 @@ export const ProductCard = () => {
       </ul>
 
       <footer className={s.productCard__action}>
-        <div className="productCard__btn">
+        <div className={s.productCard__btn}>
           <Button />
         </div>
 
