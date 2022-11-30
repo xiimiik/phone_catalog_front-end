@@ -35,7 +35,10 @@ export const ProductCard = () => {
       </ul>
 
       <footer className={s.productCard__action}>
-        <Button />
+        <div className="productCard__btn">
+          <Button />
+        </div>
+
         <Favorite />
       </footer>
     </article>

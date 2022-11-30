@@ -1,9 +1,9 @@
-.productCard {
-  color: #0F0F11;
+@import '../styles/vars';
 
+.productCard {
   width: 272px;
-  border-radius: 8px;
-  border: 1px solid #E2E6E9;
+  border-radius: $radius;
+  border: 1px solid $elements;
   padding: 32px;
 
   &__img {
@@ -12,9 +12,11 @@
   }
 
   &__title {
-    padding: 16px 0 0;
     font-size: 14px;
     line-height: 21px;
+    font-weight: 600;
+
+    padding: 16px 0 0;
     margin-bottom: 8px;
   }
 
@@ -22,19 +24,55 @@
     font-size: 22px;
     line-height: 140%;
     font-weight: 700;
+
     margin-bottom: 8px;
 
     &_oldPrice {
+      position: relative;
       margin-left: 8px;
-      color: #89939A;
+      color: $secondary;
       line-height: 28px;
       font-weight: 500;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        right: -3px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        width: 110%;
+        height: 1px;
+        background-color: $secondary;
+      }
     }
   }
 
   &__specs {
+    padding-top: 16px;
+    margin: 0 0 16px;
     list-style: none;
-    padding: 0;
-    margin: 0;
+
+    border-top: 1px solid $elements;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__name, &__value {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__name {
+    color: $secondary;
+    font-weight: 600;
   }
 }
