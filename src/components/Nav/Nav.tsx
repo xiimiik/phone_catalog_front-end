@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import logoImg from '../../assets/img/Logo.svg';
 import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
+import menuImg from '../../assets/img/Menu.svg';
 import s from './Nav.module.scss';
 import cn from 'classnames';
 
@@ -65,6 +66,10 @@ export const Nav: React.FC = () => {
           <img src={shoppingBagImg} alt="Shopping Bag" />
         </NavLink>
       </div>
+
+      <NavLink to="/menu" className={s.nav__menu}>
+        <img src={menuImg} alt="Shopping Bag" />
+      </NavLink>
     </nav>
   );
 }
