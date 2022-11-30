@@ -3,6 +3,7 @@ import s from './Favorite.module.scss';
 
 export const Favorite = () => {
   const [select, setSelect] = useState(false);
+
   return (
     <button
       onClick={() => setSelect(selected => !selected)}
