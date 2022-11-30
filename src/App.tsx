@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { Grid } from "./components/Grid/Grid";
 import { GridItem } from "./components/GridItem/GridItem";
+import { Nav } from "./components/Nav";
 import { ProductCard } from "./components/ProductCard";
 
 function App() {
