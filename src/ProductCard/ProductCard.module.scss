@@ -1,0 +1,34 @@
+.productCard {
+  color: #0F0F11;
+
+  width: 272px;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  padding: 32px;
+
+  &__img {
+    display: block;
+    margin: 0 auto 8px;
+  }
+
+  &__title {
+    padding: 16px 0 0;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    line-height: 140%;
+    font-weight: 700;
+    margin-bottom: 8px;
+
+    &_oldPrice {
+      margin-left: 8px;
+      color: #89939A;
+      line-height: 28px;
+      font-weight: 500;
+    }
+  }
+}

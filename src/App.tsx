@@ -1,17 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
+import {ProductCard} from './ProductCard';
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Phone Catalog FE (ta y take)
-        </p>
-      </header>
-    </div>
+    <ProductCard />
   );
 }
 
