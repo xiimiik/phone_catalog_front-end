@@ -20,6 +20,14 @@
     margin-bottom: 8px;
   }
 
+  &__link {
+    color: $primary;
+
+    &:hover {
+      color: $secondary-accent;
+    }
+  }
+
   &__price {
     font-size: 22px;
     line-height: 140%;

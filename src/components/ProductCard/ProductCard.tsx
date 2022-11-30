@@ -3,14 +3,19 @@ import s from "./ProductCard.module.scss";
 
 import { Button } from "../Button";
 import { Favorite } from "../Favorite/Favorite";
+import { Link } from 'react-router-dom';
 
 export const ProductCard = () => {
   return (
     <article className={s.productCard}>
-      <img className={s.productCard__img} src={img} alt="appleProduct" />
+      <Link to="/item">
+        <img className={s.productCard__img} src={img} alt="appleProduct" />
+      </Link>
 
       <h3 className={s.productCard__title}>
-        Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+        <Link to="/item" className={s.productCard__link}>
+          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+        </Link>
       </h3>
 
       <div className={s.productCard__price}>

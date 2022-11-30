@@ -1,42 +1,69 @@
+import { NavLink } from 'react-router-dom';
+
 import logoImg from '../../assets/img/Logo.svg';
 import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
 import s from './Nav.module.scss';
+import cn from 'classnames';
 
 export const Nav: React.FC = () => {
   return (
     <nav className={s.nav}>
-      <a href="/">
+      <NavLink to="/">
         <img 
           src={logoImg}
           alt="Logo"
           className={s.nav__logo}
         />
-      </a>
+      </NavLink>
 
       <ul className={s.nav__list}>
         <li className={s.nav__item}>
-          <a href="/" className={`${s.nav__link} ${s.nav__link_active}`}>home</a>
+          <NavLink 
+          to="/" 
+          className={
+            ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+          }
+        >
+          home</NavLink>
         </li>
         <li className={s.nav__item}>
-          <a href="/" className={s.nav__link}>phones</a>
+          <NavLink 
+          to="/phones" 
+          className={
+            ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+          }
+        >
+          phones</NavLink>
         </li>
         <li className={s.nav__item}>
-          <a href="/" className={s.nav__link}>tablets</a>
+          <NavLink 
+          to="/tablets" 
+          className={
+            ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+          }
+        >
+          tablets</NavLink>
         </li>
         <li className={s.nav__item}>
-          <a href="/" className={s.nav__link}>accessories</a>
+          <NavLink 
+          to="/accessories" 
+          className={
+            ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+          }
+        >
+          accessories</NavLink>
         </li>
       </ul>
 
       <div className={s.nav__cart}>
-        <a href="/" className={s.nav__cart_item}>
+        <NavLink to="/favorites" className={s.nav__cart_item}>
           <img src={favouritesImg} alt="Favourites"/>
-        </a>
+        </NavLink>
 
-        <a href="/" className={s.nav__cart_item}>
+        <NavLink to="/cart" className={s.nav__cart_item}>
           <img src={shoppingBagImg} alt="Shopping Bag" />
-        </a>
+        </NavLink>
       </div>
     </nav>
   );

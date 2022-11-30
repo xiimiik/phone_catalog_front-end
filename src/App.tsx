@@ -1,39 +1,25 @@
-import { Link, Route, Routes } from "react-router-dom";
-import { Grid } from "./components/Grid/Grid";
-import { GridItem } from "./components/GridItem/GridItem";
-import { Nav } from "./components/Nav";
-import { ProductCard } from "./components/ProductCard";
+import { Route, Routes } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { CatalogPage } from './pages/CatalogPage';
+import { Nav } from "./components/Nav"
+import { FavoritesPage } from "./pages/FavoritesPage";
+import { CartPage } from "./pages/CartPage";
+import { ItemCardPage } from "./pages/ItemCardPage";
+import { NotYet } from "./pages/NotYet";
 
 function App() {
   return (
     <>
-      <Link to="/">Home</Link>
-      <Link to="/phones">Phones</Link>
+      <Nav />
 
       <Routes>
-        <Route path="/" element={<span>123</span>} />
-        <Route path="/phones" element={
-        <>
-          <Grid>
-            <GridItem from={1} to={7}>
-              <ProductCard />
-            </GridItem>
-
-            <GridItem from={7} to={13}>
-              <ProductCard />
-            </GridItem>
-
-            <GridItem from={13} to={19}>
-              <ProductCard />
-            </GridItem>
-
-            <GridItem from={19} to={25}>
-              <ProductCard />
-            </GridItem>
-          </Grid>
-        </>}>
-
-        </Route>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/phones" element={<CatalogPage />} />
+        <Route path="/tablets" element={<NotYet />} />
+        <Route path="/accessories" element={<NotYet />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/item" element={<ItemCardPage />} />
       </Routes>
     </>
   )
