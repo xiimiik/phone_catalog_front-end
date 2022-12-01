@@ -9,3 +9,9 @@
     @content;
   }
 }
+
+@mixin text($fz, $lh, $fw) {
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: $fw;
+}

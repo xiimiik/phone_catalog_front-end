@@ -1,15 +1,14 @@
 @import '../../styles/vars';
+@import '../../styles/extends';
 
 .btn {
   width: 160px;
   height: 40px;
   padding: 10px 40px 12px;
-  color: $white;
-  background-color: $accent;
+  color: $white-color;
+  background-color: $accent-color;
 
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 700;
+  @extend %button-text;
   text-align: center;
 
   border: 1px solid inherit;
@@ -22,8 +21,8 @@
   }
 
   &_selected {
-    color: $accent;
-    background-color: $white;
-    border: 1px solid $elements;
+    color: $accent-color;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
   }
 }
