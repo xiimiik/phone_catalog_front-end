@@ -6,6 +6,7 @@ import { FavoritesPage } from "./pages/FavoritesPage";
 import { CartPage } from "./pages/CartPage";
 import { ItemCardPage } from "./pages/ItemCardPage";
 import { NotYet } from "./pages/NotYet";
+import { Footer } from "./components/Footer";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         <Route path="/item" element={<ItemCardPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      <Footer />
     </>
   )
 };
