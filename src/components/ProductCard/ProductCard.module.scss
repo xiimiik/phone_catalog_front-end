@@ -3,7 +3,7 @@
 .productCard {
   width: 100%;
   border-radius: $radius;
-  border: 1px solid $elements;
+  border: 1px solid $elements-color;
   padding: 32px;
 
   &__img {
@@ -21,10 +21,10 @@
   }
 
   &__link {
-    color: $primary;
+    color: $primary-color;
 
     &:hover {
-      color: $secondary-accent;
+      color: $secondary-accent-color;
     }
   }
 
@@ -38,7 +38,7 @@
     &_oldPrice {
       position: relative;
       margin-left: 8px;
-      color: $secondary;
+      color: $secondary-color;
       line-height: 28px;
       font-weight: 500;
       
@@ -51,7 +51,7 @@
         display: block;
         width: 110%;
         height: 1px;
-        background-color: $secondary;
+        background-color: $secondary-color;
       }
     }
   }
@@ -61,7 +61,7 @@
     margin: 0 0 16px;
     list-style: none;
 
-    border-top: 1px solid $elements;
+    border-top: 1px solid $elements-color;
   }
 
   &__info {
@@ -80,7 +80,7 @@
   }
 
   &__name {
-    color: $secondary;
+    color: $secondary-color;
     font-weight: 600;
   }
 

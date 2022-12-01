@@ -2,7 +2,7 @@
 
 .icon {
   border-radius: 50%;
-  border: 1px solid $icons;
+  border: 1px solid $icons-color;
   padding: 10px 11px;
   display: flex;
   align-items: center;
@@ -13,10 +13,10 @@
   transition: border-color 0.2s ease;
 
   &:hover {
-    border-color: $primary;
+    border-color: $primary-color;
   }
 
   &_selected {
-    border-color: $elements;
+    border-color: $elements-color;
   }
 }

@@ -1,55 +1,56 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/img/Logo.svg';
-import st from './Footer.module.scss';
+import s from './Footer.module.scss';
 import scroll from '../../assets/img/ScrollUp.svg'
 
+const footerLinks = [
+  {href: "https://github.com/fe-aug22-ta-y-take", text: "Github"},
+  {href: "https://github.com/fe-aug22-ta-y-take", text: "Contacts"},
+  {href: "https://github.com/fe-aug22-ta-y-take", text: "Rights"},
+];
 
 export const Footer: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, []);
+
   return (
-    <footer className={st.footer}>
-      <NavLink to="/">
+    <footer className={s.footer}>
+      <Link to="/">
         <img 
           src={logoImg}
           alt="Logo"
-          className={st.footer__logo}
+          className={s.footer__logo}
         />
-      </NavLink>
+      </Link>
 
-      <ul className={st.footer__list}>
-        <li>
-          <NavLink
-            className={st.footer__item}
-            to={"/"}
-          >
-            Github
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={st.footer__item}
-            to={"/"}
-          >
-            Contacts
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={st.footer__item}
-            to={"/"}
-          >rights</NavLink>
-        </li>
+      <ul className={s.footer__list}>
+        {footerLinks.map(({ href, text }) => (
+          <li key={text} className={s.footer__item}>
+            <a
+              className={s.footer__link}
+              href={href}
+            >
+              {text}
+            </a>
+          </li>
+        ))}
       </ul>
 
-      <div className={st.footer__scroll}>
-        <p className={st.footer__scrollText}>Back to top</p>
-        <NavLink to="/nav">
+      <button
+        className={s.footer__scroll}
+        onClick={() => {
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }}
+      >
+        Back to top
         <img 
           src={scroll}
           alt="Scroll up"
         />
-      </NavLink>
-      </div>
+      </button>
     </footer>
   );
 }
