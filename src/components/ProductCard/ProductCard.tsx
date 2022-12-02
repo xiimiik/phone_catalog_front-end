@@ -28,8 +28,8 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   return (
     <article className={s.productCard}>
-      <Link to="/item">
-        <img className={s.productCard__img} src={img} alt="appleProduct" />
+      <Link to="/item" className={s.productCard__img}>
+        <img src={img} alt="appleProduct" />
       </Link>
 
       <h3 className={s.productCard__title}>
