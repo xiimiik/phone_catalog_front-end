@@ -9,11 +9,12 @@ export const CatalogPage = () => {
     <>
       <Grid>
         <GridItem from={1} to={25}>
+
           <Catalog />
+
+          <Pagination />
         </GridItem>
       </Grid>
-
-      <Pagination />
     </>
   )
 }

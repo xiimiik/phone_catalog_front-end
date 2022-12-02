@@ -3,22 +3,74 @@
 @import "../../styles/extends";
 
 .nav {
+  position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0px 1px 0px $elements-color;
   margin-bottom: 24px;
+  height: 48px;
+
+  @include onDesktop {
+    height: 64px;
+  }
 
   &__logo {
     margin-left: 16px;
+
+    @include onTablet {
+      margin-left: 24px;
+      margin-right: 48px;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    z-index: 10;
+    background-color: $white-color;
+
+    top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s ease-in;
+
+    &_active {
+      transform: translateX(0);
+    }
+
+    @include onTablet {
+      position: static;
+      height: auto;
+      width: auto;
+
+      flex-direction: row;
+      justify-content: space-between;
+      flex-grow: 1;
+      box-shadow: none;
+
+      transform: translateY(0);
+    }
   }
 
   &__list {
-    display: none;
+    padding-top: 24px;
 
     @include onTablet {
+      padding-top: 0;
       display: flex;
-      margin-left: 32px;
       gap: 32px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
     }
   }
 
@@ -37,12 +89,12 @@
     position: relative;
 
     color: $secondary-color;
-    @extend %upper-text;
+    @extend %upper-text; 
 
     transition: 0.3s;
 
     @include onDesktop {
-      padding: 26px;
+      padding: 26px 0;
     }
 
     &:hover {
@@ -65,22 +117,31 @@
   }
 
   &__cart {
-    margin-left: auto;
-    display: none;
     line-height: 0;
+    display: flex;
+    box-shadow: 0px -1px 0px $elements-color;
+
+    &_item {
+      height: 64px;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      box-shadow: -1px 0px 0px $elements-color;
+    }
 
     @include onTablet {
-      display: flex;
-      
       &_item {
-        box-shadow: -1px 0px 0px $elements-color;
-        padding: 16px;
+        width: 48px;
+        height: 100%;
       }
     }
 
     @include onDesktop {
       &_item {
-        padding: 24px;
+        width: 64px;
+        height: 100%;
       }
     }
   }
@@ -89,6 +150,7 @@
     margin-left: auto;
     box-shadow: -1px 0px 0px $elements-color;
     padding: 16px;
+    height: 100%;
 
     @include onTablet {
       display: none;
