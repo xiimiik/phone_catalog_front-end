@@ -7,8 +7,8 @@ type Props = {
 
 export const PageSection: React.FC<Props> = ({children}) => {
   return (
-    <div className={s.section}>
+    <section className={s.section}>
       {children}
-    </div>
+    </section>
   );
 };
