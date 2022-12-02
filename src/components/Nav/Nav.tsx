@@ -54,9 +54,9 @@ export const Nav: React.FC = () => {
         ))}
       </div>
 
-      <Link to="/menu" className={s.nav__menu}>
+      <button className={s.nav__menu}>
         <img src={menuImg} alt="Shopping Bag" />
-      </Link>
+      </button>
     </nav>
   );
 }

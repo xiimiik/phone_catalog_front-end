@@ -5,7 +5,27 @@ import { Button } from "../Button";
 import { Favorite } from "../Favorite/Favorite";
 import { Link } from 'react-router-dom';
 
-export const ProductCard = () => {
+type Props = {
+  name: string,
+  fullPrice: number,
+  price: number,
+  screen: string,
+  capacity: string,
+  ram: string,
+  year: number,
+  image: string
+};
+
+export const ProductCard: React.FC<Props> = ({
+  name,
+  fullPrice,
+  price,
+  screen,
+  capacity,
+  ram,
+  year,
+  image
+}) => {
   return (
     <article className={s.productCard}>
       <Link to="/item">
@@ -14,28 +34,28 @@ export const ProductCard = () => {
 
       <h3 className={s.productCard__title}>
         <Link to="/item" className={s.productCard__link}>
-          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+          {`${name} (iMT9G2FS/A)`}
         </Link>
       </h3>
 
       <div className={s.productCard__price}>
-        $799 <span className={s.productCard__price_oldPrice}>$899</span>
+        {`$${price}`} <span className={s.productCard__price_oldPrice}>{`$${fullPrice}`}</span>
       </div>
 
       <ul className={s.productCard__specs}>
         <li className={s.productCard__info}>
           <h6 className={s.productCard__name}>Screen</h6>
-          <strong className={s.productCard__value}>5.8” OLED</strong>
+          <strong className={s.productCard__value}>{screen}</strong>
         </li>
 
         <li className={s.productCard__info}>
           <h6 className={s.productCard__name}>Capacity</h6>
-          <strong className={s.productCard__value}>64 GB</strong>
+          <strong className={s.productCard__value}>{capacity}</strong>
         </li>
 
         <li className={s.productCard__info}>
           <h6 className={s.productCard__name}>RAM</h6>
-          <strong className={s.productCard__value}>4 GB</strong>
+          <strong className={s.productCard__value}>{ram}</strong>
         </li>
       </ul>
 

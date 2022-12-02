@@ -1,6 +1,8 @@
 @import '../../styles/vars';
 
 .productCard {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   border-radius: $radius;
   border: 1px solid $elements-color;
@@ -74,7 +76,8 @@
     }
   }
 
-  &__name, &__value {
+  &__name,
+  &__value {
     font-size: 12px;
     line-height: 15px;
   }
@@ -88,5 +91,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-right: 8px;
   }
 }
