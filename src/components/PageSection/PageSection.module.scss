@@ -1,0 +1,15 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.section {
+  width: 100%;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+}

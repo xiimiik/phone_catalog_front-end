@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  row-gap: 32px;
+  margin: 0 auto;
+  padding: 0 $mob-side-padding;
+
+  @include onTablet {
+    padding: 0 $tab-side-padding;
+  }
+
+  @include onDesktop {
+    padding: 0 $desk-side-padding;
+  }
+}
