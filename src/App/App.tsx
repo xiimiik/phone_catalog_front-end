@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { HomePage } from '../pages/HomePage';
 import { CatalogPage } from '../pages/CatalogPage';
@@ -20,9 +20,12 @@ export function App() {
       <main className={s.main}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+
           <Route path="/phones" element={<CatalogPage />} />
           <Route path="/tablets" element={<NotYet />} />
           <Route path="/accessories" element={<NotYet />} />
+
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/item" element={<ItemCardPage />} />

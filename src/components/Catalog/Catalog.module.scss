@@ -1,23 +1,40 @@
 @import "../../styles/mixins";
+@import "../../styles/extends";
 
 .catalog {
-  display: grid;
-  column-gap: 16px;
-  row-gap: 40px;
+  &__title {
+    margin-bottom: 8px;
 
-  @include onTablet {
-    grid-template-columns: repeat(1, minmax(autofit, 1fr));
+    @extend %main-title-text;
   }
 
-  @include onLaptop {
-    grid-template-columns: repeat(2, minmax(272px, 1fr));
+  &__count {
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
   }
 
-  @media(min-width: 910px) {
-    grid-template-columns: repeat(3, minmax(272px, 1fr));
-  }
-
-  @include onDesktop {
-    grid-template-columns: repeat(4, minmax(272px, 1fr));
+  &__list {
+    display: grid;
+    column-gap: 16px;
+    row-gap: 40px;
+  
+    @include onTablet {
+      grid-template-columns: repeat(1, minmax(autofit, 1fr));
+    }
+  
+    @include onLaptop {
+      grid-template-columns: repeat(2, minmax(272px, 1fr));
+    }
+  
+    @media(min-width: 910px) {
+      grid-template-columns: repeat(3, minmax(272px, 1fr));
+    }
+  
+    @include onDesktop {
+      grid-template-columns: repeat(4, minmax(272px, 1fr));
+    }
   }
 }

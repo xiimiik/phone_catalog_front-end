@@ -1,12 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import s from './Nav.module.scss';
+import cn from 'classnames';
 
 import logoImg from '../../assets/img/Logo.svg';
 import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
 import menuImg from '../../assets/img/Menu.svg';
 
-import s from './Nav.module.scss';
-import cn from 'classnames';
 
 const navLinks = [
   {to: "/", text: "home"},
@@ -21,9 +22,18 @@ const boxLinks = [
 ];
 
 export const Nav: React.FC = () => {
+  const [activeMenu, setActiveMenu] = useState(false);
+
+  const onActiveMenu = () => {
+    setActiveMenu(active => !active);
+  }
+
   return (
     <nav className={s.nav}>
-      <Link to="/">
+      <Link
+        to="/"
+        onClick={() => setActiveMenu(false)}
+      >
         <img 
           src={logoImg}
           alt="Logo"
@@ -31,32 +41,45 @@ export const Nav: React.FC = () => {
         />
       </Link>
 
-      <ul className={s.nav__list}>
-        {navLinks.map(({ to, text }) => (
-          <li key={text} className={s.nav__item}>
-            <NavLink 
-              to={to} 
-              className={
-                ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
-              }
-            >
-              {text}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-
-      <div className={s.nav__cart}>
-        {boxLinks.map(({ to, imgSrc, alt }) => (
-          <NavLink key={alt} to={to} className={s.nav__cart_item}>
-            <img src={imgSrc} alt={alt}/>
-          </NavLink>
-        ))}
-      </div>
-
-      <button className={s.nav__menu}>
+      <button
+        className={s.nav__menu}
+        onClick={() => onActiveMenu()}
+      >
         <img src={menuImg} alt="Shopping Bag" />
       </button>
+      <div className={cn(s.nav__wrapper, {
+        [s['nav__wrapper_active']]: activeMenu,
+      })}>
+        <ul className={s.nav__list}>
+          {navLinks.map(({ to, text }) => (
+            <li key={text} className={s.nav__item}>
+              <NavLink 
+                to={to} 
+                className={
+                  ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+                }
+                onClick={() => setActiveMenu(false)}
+              >
+                {text}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+
+        <div className={s.nav__cart}>
+          {boxLinks.map(({ to, imgSrc, alt }) => (
+            <NavLink
+              key={alt}
+              to={to}
+              className={s.nav__cart_item}
+              onClick={() => setActiveMenu(false)
+            }
+            >
+              <img src={imgSrc} alt={alt}/>
+            </NavLink>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 }
