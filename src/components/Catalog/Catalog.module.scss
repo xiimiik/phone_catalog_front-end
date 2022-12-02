@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+
+.catalog {
+  display: grid;
+  column-gap: 16px;
+  row-gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

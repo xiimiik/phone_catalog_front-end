@@ -32,6 +32,8 @@ export const Footer: React.FC = () => {
             <a
               className={s.footer__link}
               href={href}
+              target="_blank"
+              rel="noreferrer"
             >
               {text}
             </a>

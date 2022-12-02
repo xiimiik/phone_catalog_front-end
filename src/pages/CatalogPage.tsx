@@ -1,14 +1,15 @@
-import { Pagination } from "../components/Pagination/Pagination";
+import { Pagination } from "../components/Pagination/";
 import { Grid } from "../components/Grid"
 import { GridItem } from "../components/GridItem/GridItem";
-import { ProductCard } from "../components/ProductCard";
+
+import { Catalog } from "../components/Catalog";
 
 export const CatalogPage = () => {
   return (
     <>
       <Grid>
-        <GridItem from={1} to={7}>
-          <ProductCard />
+        <GridItem from={1} to={25}>
+          <Catalog />
         </GridItem>
       </Grid>
 
