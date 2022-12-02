@@ -4,14 +4,14 @@
   }
 }
 
-@mixin onTablet {
-  @media (min-width: 640px) {
+@mixin onLaptop {
+  @media (min-width: 768px) {
     @content;
   }
 }
 
-@mixin text($fz, $lh, $fw) {
-  font-size: $fz;
-  line-height: $lh;
-  font-weight: $fw;
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
 }
