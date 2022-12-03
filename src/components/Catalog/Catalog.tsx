@@ -16,6 +16,7 @@ import s from './Catalog.module.scss';
 
 import { optionsSorting, optionsCount } from '../../utils/optionsParams';
 
+
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
   const [phonesLength, setPhonesLength] = useState(0);
@@ -107,10 +108,10 @@ export const Catalog = () => {
               return (
                 <ProductCard
                   key={id}
-                  name={name}
+                  name={phone.name}
                   fullPrice={fullPrice}
                   price={price}
-                  screen={screen}
+                  screen={phone.screen}
                   capacity={capacity}
                   ram={ram}
                 />
