@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 import s from './GridItem.module.scss';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 export const GridItem: React.FC<Props> = ({
   from,
   to,
-  children
+  children,
 }) => {
   return (
     <div className={s[`grid__item_${from}_${to}`]}>

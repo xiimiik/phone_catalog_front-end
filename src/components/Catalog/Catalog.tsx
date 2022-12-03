@@ -10,12 +10,13 @@ import { getPhones, getPhonesWithLimit } from '../../api/phones';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { SelectParams } from '../SelectParams';
-import { Pagination } from "../Pagination";
+import { Pagination } from '../Pagination';
 
 import s from './Catalog.module.scss';
 
 import { optionsSorting } from '../../utils/optionsParams';
 import { optionsCount } from '../../utils/optionsParams';
+
 
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
@@ -49,10 +50,12 @@ export const Catalog = () => {
       const length = await getPhones();
       const phonesFromServer = await getPhonesWithLimit(offset, limit);
 
+      setIsLoading(true);
+
       setPhones(phonesFromServer.edges);
       setPhonesLength(length.count);
     } catch (error: any) {
-      console.log(error.message);
+      throw new Error(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -71,6 +74,7 @@ export const Catalog = () => {
       <h1 className={s.catalog__title}>Mobile phones</h1>
 
       <div className={s.catalog__count}>
+
         {phonesLength} models
       </div>
 
@@ -102,14 +106,12 @@ export const Catalog = () => {
               return (
                 <ProductCard
                   key={id}
-                  name={name}
+                  name={phone.name}
                   fullPrice={fullPrice}
                   price={price}
-                  screen={screen}
+                  screen={phone.screen}
                   capacity={capacity}
                   ram={ram}
-                  year={year}
-                  image={image}
                 />
               );
             })}
