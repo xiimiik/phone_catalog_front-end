@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import s from './CartItem.module.scss'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import s from './CartItem.module.scss';
 
-import img from '../../assets/img/Apple.png'
-import btn from '../../assets/img/ButtonDelete.svg'
-import minus from '../../assets/img/Minus.svg'
-import plus from '../../assets/img/Plus.svg'
+import img from '../../assets/img/Apple.png';
+import btn from '../../assets/img/ButtonDelete.svg';
+import minus from '../../assets/img/Minus.svg';
+import plus from '../../assets/img/Plus.svg';
 
 export const CartItem: React.FC = () => {
-  let count = 1;
+  const count = 1;
 
   return (
     <article className={s.cartItem}>
@@ -16,7 +16,7 @@ export const CartItem: React.FC = () => {
         <button className={s.cartItem__deleteButton}>
           <img src={btn} alt="button delete" />
         </button>
-      
+
         <Link to="/item">
           <img className={s.cartItem__image} src={img} alt="appleProduct" />
         </Link>
@@ -41,9 +41,9 @@ export const CartItem: React.FC = () => {
         </div>
 
         <div className={s.cartItem__price}>
-        $999
+          $999
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
