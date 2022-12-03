@@ -1,0 +1,69 @@
+
+@import '../../styles/vars';
+@import '../../styles/extends';
+@import '../../styles/mixins';
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  margin: 0 auto;
+
+  @include onTablet {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 50px;
+    color: $primary-color;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    padding: 10px 40px 12px;
+    color: $white-color;
+    background-color: $accent-color;
+    text-transform: uppercase;
+  
+    @extend %button-text;
+    text-align: center;
+  
+    border: 1px solid transparent;
+    border-radius: $radius;
+  
+    transition: box-shadow 0.2s ease;
+  
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.4);
+    }
+  
+    &_selected {
+      color: $accent-color;
+      background-color: $white-color;
+      border: 1px solid $elements-color;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 540px;
+    object-fit: contain;
+
+    @include onTablet {
+      width: auto;
+    }
+  }
+}
