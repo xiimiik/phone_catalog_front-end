@@ -1,4 +1,4 @@
-const BASE_URL = 'https://effulgent-elf-0da1cb.netlify.app/.netlify/functions/server/';
+const BASE_URL = 'https://effulgent-elf-0da1cb.netlify.app/.netlify/functions/server';
 
 function wait(delay: number) {
   return new Promise(resolve => {

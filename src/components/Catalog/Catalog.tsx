@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Product } from '../../types/Product';
 import { Phone } from '../../types/Phone';
-
-import { getPhones } from '../../api/users';
+import { getPhones } from '../../api/phones';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { SelectParams } from '../SelectParams';
@@ -20,7 +19,7 @@ export const Catalog = () => {
       setIsLoading(true)
       const phonesFromServer = await getPhones();
 
-      setPhones(phonesFromServer);
+      setPhones(phonesFromServer.edges);
     } catch (error: any) {
       console.log(error.message);
     } finally {
