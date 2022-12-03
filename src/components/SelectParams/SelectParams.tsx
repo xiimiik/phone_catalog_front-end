@@ -14,8 +14,7 @@ type Props = {
   selectSort: string,
   setSelectLimit: (limit: string) => void,
   setSelectSort: (limit: string) => void,
-  setOrderSort: (order: string) => void,
-  setDirSort: (dir: string) => void,
+  setSorting: (order: string, dir: string) => void,
 };
 
 export const SelectParams: React.FC<Props> = ({
@@ -25,36 +24,30 @@ export const SelectParams: React.FC<Props> = ({
   setSelectLimit,
   selectSort,
   setSelectSort,
-  setOrderSort,
-  setDirSort,
+  setSorting,
 }) => {
   const [selectSorting, setSelectSorting] = useState(selectSort);
   const [selectCount, setSelectCount] = useState(selectLimit);
 
   switch (selectSorting) {
     case 'ascPrice':
-      setOrderSort('price');
-      setDirSort('asc');
+      setSorting('price', 'asc');
       break;
 
     case 'descPrice':
-      setOrderSort('price');
-      setDirSort('desc');
+      setSorting('price', 'desc');
       break;
 
     case 'ascYear':
-      setOrderSort('new');
-      setDirSort('asc');
+      setSorting('new', 'asc');
       break;
 
     case 'descYear':
-      setOrderSort('new');
-      setDirSort('desc');
+      setSorting('new', 'desc');
       break;
 
     default:
-      setOrderSort('');
-      setDirSort('');
+      setSorting('', '');
   }
 
   const getValueSorting = useCallback(() => {

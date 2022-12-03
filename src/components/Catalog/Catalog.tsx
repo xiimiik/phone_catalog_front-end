@@ -52,6 +52,11 @@ export const Catalog = () => {
     }, [phones],
   );
 
+  const setSorting = (order: string, dir: string) => {
+    setOrderSort(order);
+    setDirSort(dir);
+  };
+
   useEffect(() => {
     getPhonesFromServer(
       selectOffset,
@@ -76,6 +81,7 @@ export const Catalog = () => {
 
       <div className={s.catalog__count}>
         {phonesLength}
+        {' '}
         models
       </div>
 
@@ -86,8 +92,7 @@ export const Catalog = () => {
         selectSort={selectSort}
         setSelectLimit={setSelectLimit}
         setSelectSort={setSelectSort}
-        setOrderSort={setOrderSort}
-        setDirSort={setDirSort}
+        setSorting={setSorting}
       />
 
       {isLoading ? (
@@ -102,8 +107,7 @@ export const Catalog = () => {
             screen,
             capacity,
             ram,
-            // year,
-            // image
+            image,
           }) => {
             return (
               <ProductCard
@@ -114,6 +118,7 @@ export const Catalog = () => {
                 screen={screen}
                 capacity={capacity}
                 ram={ram}
+                image={image}
               />
             );
           })}
