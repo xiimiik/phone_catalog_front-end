@@ -51,10 +51,14 @@ export const Nav: React.FC = () => {
       </Link>
 
       <button
-        className={s.nav__menu}
+        className={cn(s.nav__menu, {
+          [s['nav__menu_active']]: activeMenu,
+        })}
         onClick={onOpenMenu}
       >
-        <img src={menuImg} alt="Shopping Bag" />
+        <div className={s.nav__menu_wrap}>
+          <span className={s.nav__menu_item}></span>
+        </div>
       </button>
 
       <div className={cn(s.nav__wrapper, {
