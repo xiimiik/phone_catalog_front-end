@@ -1,0 +1,48 @@
+@import '../../styles/vars';
+@import '../../styles/extends';
+
+.custom_select {
+  &__control {
+    cursor: pointer !important;
+    border-radius: $radius !important;
+
+    .custom_select__dropdown-indicator {
+      transform: rotate(0deg) !important;
+      transition: transform 0.3s ease;
+    }
+
+    &--menu-is-open {
+      .custom_select__dropdown-indicator {
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+
+  &__single-value {
+    @extend %button-text;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__menu {
+    margin: 4px 0 !important;
+    border-radius: $radius !important;
+  }
+
+  &__option {
+    cursor: pointer !important;
+    color: $secondary-color !important;
+
+    &--is-focused, &--is-selected {
+      color: $primary-color !important;
+      background-color: $hoverBg-color !important;
+    }
+  }
+}
+
+.css-t3ipsp-control {
+  box-shadow: 0 0 1px $primary-color !important;
+  border-color: $primary-color !important;
+}

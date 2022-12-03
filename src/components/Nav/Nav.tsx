@@ -8,7 +8,6 @@ import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
 import menuImg from '../../assets/img/Menu.svg';
 
-
 const navLinks = [
   {to: "/", text: "home"},
   {to: "/phones", text: "phones"},
@@ -24,15 +23,25 @@ const boxLinks = [
 export const Nav: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState(false);
 
-  const onActiveMenu = () => {
+  const onOpenMenu = () => {
     setActiveMenu(active => !active);
+    document.body.style.overflow = 'hidden';
+
+    if (activeMenu) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  const onCloseMenu = () => {
+    setActiveMenu(false);
+    document.body.style.overflow = '';
   }
 
   return (
     <nav className={s.nav}>
       <Link
         to="/"
-        onClick={() => setActiveMenu(false)}
+        onClick={onCloseMenu}
       >
         <img 
           src={logoImg}
@@ -43,10 +52,11 @@ export const Nav: React.FC = () => {
 
       <button
         className={s.nav__menu}
-        onClick={() => onActiveMenu()}
+        onClick={onOpenMenu}
       >
         <img src={menuImg} alt="Shopping Bag" />
       </button>
+
       <div className={cn(s.nav__wrapper, {
         [s['nav__wrapper_active']]: activeMenu,
       })}>
@@ -58,7 +68,7 @@ export const Nav: React.FC = () => {
                 className={
                   ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
                 }
-                onClick={() => setActiveMenu(false)}
+                onClick={onCloseMenu}
               >
                 {text}
               </NavLink>
@@ -72,8 +82,7 @@ export const Nav: React.FC = () => {
               key={alt}
               to={to}
               className={s.nav__cart_item}
-              onClick={() => setActiveMenu(false)
-            }
+              onClick={onCloseMenu}
             >
               <img src={imgSrc} alt={alt}/>
             </NavLink>

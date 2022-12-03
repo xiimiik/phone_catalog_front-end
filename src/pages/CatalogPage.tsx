@@ -1,4 +1,3 @@
-import { Pagination } from "../components/Pagination/";
 import { Grid } from "../components/Grid"
 import { GridItem } from "../components/GridItem/GridItem";
 
@@ -9,10 +8,7 @@ export const CatalogPage = () => {
     <>
       <Grid>
         <GridItem from={1} to={25}>
-
           <Catalog />
-
-          <Pagination />
         </GridItem>
       </Grid>
     </>

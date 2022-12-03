@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+
 import { Phone } from '../../types/Phone';
 import { getPhones } from '../../api/users';
 import { ProductCard } from '../ProductCard';
-import s from './Catalog.module.scss'
 import { Loader } from '../Loader';
-import { Select } from '../Select';
+import { SelectParams } from '../SelectParams';
+import { Pagination } from "../Pagination";
+
+import s from './Catalog.module.scss'
 
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -28,7 +31,7 @@ export const Catalog = () => {
   }, []);
 
   return (
-    <>
+    <div className={s.catalog}>
       <h1 className={s.catalog__title}>Mobile phones</h1>
 
       <div className={s.catalog__count}>
@@ -39,7 +42,7 @@ export const Catalog = () => {
         <Loader />
       ) : (
         <>
-          <Select />
+          <SelectParams />
 
           <div className={s.catalog__list}>
             {phones.map(({
@@ -68,8 +71,10 @@ export const Catalog = () => {
               );
             })}
           </div>
+
+          <Pagination />
         </>
       )}
-    </>
+    </div>
   );
 };
