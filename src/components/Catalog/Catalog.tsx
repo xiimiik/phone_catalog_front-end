@@ -91,41 +91,39 @@ export const Catalog = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className={s.catalo__wrap}>
-          <div className={s.catalog__list}>
-            {sortedPhones?.map(({
-              id,
-              name,
-              fullPrice,
-              price,
-              screen,
-              capacity,
-              ram,
-              // year,
-              // image
-            }) => {
-              return (
-                <ProductCard
-                  key={id}
-                  name={name}
-                  fullPrice={fullPrice}
-                  price={price}
-                  screen={screen}
-                  capacity={capacity}
-                  ram={ram}
-                />
-              );
-            })}
-          </div>
-
-          <Pagination
-            setSelectOffset={setSelectOffset}
-            selectOffset={selectOffset}
-            phonesLength={phonesLength}
-            selectLimit={Number(selectLimit)}
-          />
+        <div className={s.catalog__list}>
+          {sortedPhones?.map(({
+            id,
+            name,
+            fullPrice,
+            price,
+            screen,
+            capacity,
+            ram,
+            // year,
+            // image
+          }) => {
+            return (
+              <ProductCard
+                key={id}
+                name={name}
+                fullPrice={fullPrice}
+                price={price}
+                screen={screen}
+                capacity={capacity}
+                ram={ram}
+              />
+            );
+          })}
         </div>
       )}
+
+      <Pagination
+        setSelectOffset={setSelectOffset}
+        selectOffset={selectOffset}
+        phonesLength={phonesLength}
+        selectLimit={Number(selectLimit)}
+      />
     </div>
   );
 };
