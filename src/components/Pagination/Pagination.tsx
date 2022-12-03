@@ -17,7 +17,7 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(selectOffset);
 
-  const changeCountOfPages = (countOfItems: number) => {
+  const getPages = (countOfItems: number) => {
     const pages = [];
     const countOfButtons = Math.ceil(countOfItems / selectLimit);
 
@@ -28,7 +28,7 @@ export const Pagination: React.FC<Props> = ({
     return pages;
   };
 
-  const lastPage = changeCountOfPages(phonesLength).length;
+  const lastPage = getPages(phonesLength).length;
 
   const checkPage = (page: number) => {
     return currentPage === page;
@@ -51,7 +51,7 @@ export const Pagination: React.FC<Props> = ({
         </button>
       </li>
 
-      {changeCountOfPages(phonesLength).map(page => (
+      {getPages(phonesLength).map(page => (
         <li key={page} className={s.pagination__item}>
           <button
             onClick={() => {
