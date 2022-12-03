@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 
 import Select from 'react-select';
 
-import { SelectOption } from './../../types/SelectOption';
+import { SelectOption } from '../../types/SelectOption';
 
 import s from './SelectParams.module.scss';
 import './CustomSelect.scss';
@@ -14,7 +14,7 @@ type Props = {
   optionsCount: SelectOption[],
   setSelectLimit: (limit: string) => void,
   setSelectSort: (sort: string) => void,
-}
+};
 
 export const SelectParams: React.FC<Props> = ({
   selectSort,
@@ -28,7 +28,9 @@ export const SelectParams: React.FC<Props> = ({
   const [selectCount, setSelectCount] = useState(selectLimit);
 
   const getValueSorting = useCallback(() => {
-    return selectSorting ? optionsSorting.find(sorting => sorting.value === selectSorting) : '';
+    return selectSorting
+      ? optionsSorting.find(sorting => sorting.value === selectSorting)
+      : '';
   }, [selectSorting]);
 
   const handleChangeSorting = useCallback((newValue: any) => {
@@ -37,7 +39,9 @@ export const SelectParams: React.FC<Props> = ({
   }, [selectSorting]);
 
   const getValueCount = useCallback(() => {
-    return selectCount ? optionsCount.find(count => count.value === selectCount) : 0;
+    return selectCount
+      ? optionsCount.find(count => count.value === selectCount)
+      : 0;
   }, [selectCount]);
 
   const handleChangeCount = useCallback((newValue: any) => {
@@ -52,11 +56,10 @@ export const SelectParams: React.FC<Props> = ({
 
         <Select
           className={s.select__container_sort}
-          classNamePrefix='custom_select'
+          classNamePrefix="custom_select"
           options={optionsSorting}
           value={getValueSorting()}
           onChange={handleChangeSorting}
-          isSearchable={false}
         />
       </li>
 
@@ -65,11 +68,10 @@ export const SelectParams: React.FC<Props> = ({
 
         <Select
           className={s.select__container_count}
-          classNamePrefix='custom_select'
+          classNamePrefix="custom_select"
           options={optionsCount}
           value={getValueCount()}
           onChange={handleChangeCount}
-          isSearchable={false}
         />
       </li>
     </ul>

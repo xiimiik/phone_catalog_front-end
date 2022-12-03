@@ -49,5 +49,11 @@
       border-color: transparent;
       color: $white-color;
     }
+
+    &:disabled {
+      border: 1px solid $elements-color;
+      color: $elements-color;
+      cursor: default;
+    }
   }
 }
