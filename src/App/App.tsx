@@ -29,6 +29,7 @@ export function App() {
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/item" element={<ItemCardPage />} />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

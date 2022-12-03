@@ -1,0 +1,42 @@
+@import '../../styles/vars';
+@import '../../styles/extends';
+@import '../../styles/mixins';
+
+.select {
+  &__list {
+    display: flex;
+  }
+
+  &__title {
+    @extend %small-text;
+
+    color: $secondary-color;
+    margin-bottom: 4px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__container {
+    &_sort {
+      width: 136px;
+    }
+
+    &_count {
+      width: 136px;
+    }
+
+    @include onTablet {
+      &_sort {
+        width: 188px;
+      }
+  
+      &_count {
+        width: 138px;
+      }
+    }
+  }
+}
