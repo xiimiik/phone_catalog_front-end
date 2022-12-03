@@ -56,7 +56,6 @@ export const SelectParams: React.FC<Props> = ({
           options={optionsSorting}
           value={getValueSorting()}
           onChange={handleChangeSorting}
-          isSearchable={false}
         />
       </li>
 
@@ -69,7 +68,6 @@ export const SelectParams: React.FC<Props> = ({
           options={optionsCount}
           value={getValueCount()}
           onChange={handleChangeCount}
-          isSearchable={false}
         />
       </li>
     </ul>
