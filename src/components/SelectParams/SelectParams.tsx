@@ -8,24 +8,47 @@ import s from './SelectParams.module.scss';
 import './CustomSelect.scss';
 
 type Props = {
-  selectSort: string,
-  selectLimit: string,
   optionsSorting: SelectOption[],
   optionsCount: SelectOption[],
+  selectLimit: string,
+  selectSort: string,
   setSelectLimit: (limit: string) => void,
-  setSelectSort: (sort: string) => void,
+  setSelectSort: (limit: string) => void,
+  setSorting: (order: string, dir: string) => void,
 };
 
 export const SelectParams: React.FC<Props> = ({
-  selectSort,
-  selectLimit,
   optionsSorting,
   optionsCount,
+  selectLimit,
   setSelectLimit,
+  selectSort,
   setSelectSort,
+  setSorting,
 }) => {
   const [selectSorting, setSelectSorting] = useState(selectSort);
   const [selectCount, setSelectCount] = useState(selectLimit);
+
+  switch (selectSorting) {
+    case 'ascPrice':
+      setSorting('price', 'asc');
+      break;
+
+    case 'descPrice':
+      setSorting('price', 'desc');
+      break;
+
+    case 'ascYear':
+      setSorting('new', 'asc');
+      break;
+
+    case 'descYear':
+      setSorting('new', 'desc');
+      break;
+
+    default:
+      setSorting('', '');
+  }
 
   const getValueSorting = useCallback(() => {
     return selectSorting
@@ -60,6 +83,7 @@ export const SelectParams: React.FC<Props> = ({
           options={optionsSorting}
           value={getValueSorting()}
           onChange={handleChangeSorting}
+          isSearchable={false}
         />
       </li>
 
@@ -72,6 +96,7 @@ export const SelectParams: React.FC<Props> = ({
           options={optionsCount}
           value={getValueCount()}
           onChange={handleChangeCount}
+          isSearchable={false}
         />
       </li>
     </ul>

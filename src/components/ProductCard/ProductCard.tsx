@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import img from '../../assets/img/Apple.png';
 import s from './ProductCard.module.scss';
 
 import { Button } from '../Button';
@@ -14,6 +13,7 @@ type Props = {
   screen: string,
   capacity: string,
   ram: string,
+  image: string,
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -23,11 +23,12 @@ export const ProductCard: React.FC<Props> = ({
   screen,
   capacity,
   ram,
+  image,
 }) => {
   return (
     <article className={s.productCard}>
       <Link to="/item" className={s.productCard__img}>
-        <img src={img} alt="appleProduct" />
+        <img src={` https://effulgent-elf-0da1cb.netlify.app/${image}`} alt="appleProduct" />
       </Link>
 
       <h3 className={s.productCard__title}>

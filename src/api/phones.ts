@@ -8,8 +8,14 @@ export const getPhones = async () => {
   return phones || null;
 };
 
-export const getPhonesWithLimit = async (offset: number, limit: string) => {
-  const phones = await client.get<Product<Phone>>(`/products/phones?limit=${limit}&offset=${offset}`);
+export const getPhonesWithLimit = async (
+  offset: number,
+  limit: string,
+  order: string,
+  dir: string,
+) => {
+  const phones = await client
+    .get<Product<Phone>>(`/products/phones?limit=${limit}&offset=${offset}&order=${order}&dir=${dir}`);
 
   return phones || null;
 };

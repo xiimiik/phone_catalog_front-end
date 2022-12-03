@@ -2,7 +2,6 @@ import {
   useEffect,
   useState,
   useCallback,
-  useMemo,
 } from 'react';
 
 import { Phone } from '../../types/Phone';
@@ -20,35 +19,26 @@ export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
   const [phonesLength, setPhonesLength] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectSort, setSelectSort] = useState(optionsSorting[0].value);
+
   const [selectLimit, setSelectLimit] = useState(optionsCount[2].value);
+  const [selectSort, setSelectSort] = useState(optionsSorting[2].value);
   const [selectOffset, setSelectOffset] = useState(1);
 
-  const sortPhones = (sortBy: string) => {
-    return phones?.sort((phone1: Phone, phone2: Phone): number => {
-      switch (sortBy) {
-        case 'newest':
-          return phone1.year - phone2.year;
+  const [orderSort, setOrderSort] = useState('');
+  const [dirSort, setDirSort] = useState('');
 
-        case 'oldest':
-          return phone2.year - phone1.year;
-
-        default:
-          return 0;
-      }
-    });
-  };
-
-  const sortedPhones = useMemo(() => (
-    sortPhones(selectSort)
-  ), [phones, selectSort]);
-
-  const getPhonesWithLimitFromServer = useCallback(
-    async (offset: number, limit: string) => {
+  const getPhonesFromServer = useCallback(
+    async (
+      offset: number,
+      limit: string,
+      order: string,
+      dir: string,
+    ) => {
       try {
         setIsLoading(true);
         const length = await getPhones();
-        const phonesFromServer = await getPhonesWithLimit(offset, limit);
+        const phonesFromServer
+          = await getPhonesWithLimit(offset, limit, order, dir);
 
         setIsLoading(true);
 
@@ -62,13 +52,28 @@ export const Catalog = () => {
     }, [phones],
   );
 
+  const setSorting = (order: string, dir: string) => {
+    setOrderSort(order);
+    setDirSort(dir);
+  };
+
   useEffect(() => {
-    getPhonesWithLimitFromServer(selectOffset, selectLimit);
+    getPhonesFromServer(
+      selectOffset,
+      selectLimit,
+      orderSort,
+      dirSort,
+    );
   }, []);
 
   useEffect(() => {
-    getPhonesWithLimitFromServer(selectOffset, selectLimit);
-  }, [selectLimit, selectOffset]);
+    getPhonesFromServer(
+      selectOffset,
+      selectLimit,
+      orderSort,
+      dirSort,
+    );
+  }, [selectLimit, selectOffset, orderSort, dirSort]);
 
   return (
     <div className={s.catalog}>
@@ -76,23 +81,25 @@ export const Catalog = () => {
 
       <div className={s.catalog__count}>
         {phonesLength}
+        {' '}
         models
       </div>
 
       <SelectParams
-        selectSort={selectSort}
-        selectLimit={selectLimit}
         optionsSorting={optionsSorting}
         optionsCount={optionsCount}
+        selectLimit={selectLimit}
+        selectSort={selectSort}
         setSelectLimit={setSelectLimit}
         setSelectSort={setSelectSort}
+        setSorting={setSorting}
       />
 
       {isLoading ? (
         <Loader />
       ) : (
         <div className={s.catalog__list}>
-          {sortedPhones?.map(({
+          {phones?.map(({
             id,
             name,
             fullPrice,
@@ -100,8 +107,7 @@ export const Catalog = () => {
             screen,
             capacity,
             ram,
-            // year,
-            // image
+            image,
           }) => {
             return (
               <ProductCard
@@ -112,6 +118,7 @@ export const Catalog = () => {
                 screen={screen}
                 capacity={capacity}
                 ram={ram}
+                image={image}
               />
             );
           })}
