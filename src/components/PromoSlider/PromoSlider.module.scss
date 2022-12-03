@@ -1,0 +1,19 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.promo {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding: 0 $tab-side-padding;
+  }
+
+  @include onDesktop {
+    padding: 0 $desk-side-padding;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
