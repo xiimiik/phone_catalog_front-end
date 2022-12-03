@@ -1,3 +1,4 @@
+import React from 'react';
 import s from './PromoSlider.module.scss';
 import img from '../../assets/img/promo-slide-1.png';
 
@@ -15,7 +16,6 @@ export const PromoSlider: React.FC = () => {
           </div>
         </div>
 
-        <div className="swiper-pagination"></div>
       </div>
     </div>
   );

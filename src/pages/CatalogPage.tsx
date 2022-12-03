@@ -1,7 +1,6 @@
-import { Grid } from "../components/Grid"
-import { GridItem } from "../components/GridItem/GridItem";
-
-import { Catalog } from "../components/Catalog";
+import { Grid } from '../components/Grid';
+import { GridItem } from '../components/GridItem/GridItem';
+import { Catalog } from '../components/Catalog';
 
 export const CatalogPage = () => {
   return (
@@ -12,5 +11,5 @@ export const CatalogPage = () => {
         </GridItem>
       </Grid>
     </>
-  )
-}
+  );
+};

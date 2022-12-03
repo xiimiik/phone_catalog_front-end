@@ -1,1 +1,1 @@
-export { GridItem } from './GridItem'
+export { GridItem } from './GridItem';

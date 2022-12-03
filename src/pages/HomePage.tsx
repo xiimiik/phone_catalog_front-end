@@ -1,9 +1,9 @@
-import { Categories } from "../components/Categories"
-import { Container } from "../components/Container"
-import { HotPrices } from "../components/HotPrices"
-import { Models } from "../components/Models"
-import { PageSection } from "../components/PageSection"
-import { PromoSlider } from "../components/PromoSlider"
+import { Categories } from '../components/Categories';
+import { Container } from '../components/Container';
+import { HotPrices } from '../components/HotPrices';
+import { Models } from '../components/Models';
+import { PageSection } from '../components/PageSection';
+import { PromoSlider } from '../components/PromoSlider';
 
 export const HomePage = () => {
   return (
@@ -37,5 +37,5 @@ export const HomePage = () => {
         </PageSection>
       </Container>
     </>
-  )
-}
+  );
+};
