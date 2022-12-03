@@ -1,6 +1,8 @@
 export const optionsSorting = [
-  { value: 'newest', label: 'Newest' },
-  { value: 'oldest', label: 'Oldest' },
+  { value: 'ascPrice', label: 'Lower Price' },
+  { value: 'descPrice', label: 'Higher Price' },
+  { value: 'ascYear', label: 'Newest' },
+  { value: 'descYear', label: 'Oldest' },
 ];
 
 export const optionsCount = [
