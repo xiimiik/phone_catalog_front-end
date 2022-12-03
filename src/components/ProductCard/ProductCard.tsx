@@ -1,9 +1,11 @@
-import img from "../../assets/img/Apple.png";
-import s from "./ProductCard.module.scss";
-
-import { Button } from "../Button";
-import { Favorite } from "../Favorite/Favorite";
+import React from 'react';
 import { Link } from 'react-router-dom';
+
+import img from '../../assets/img/Apple.png';
+import s from './ProductCard.module.scss';
+
+import { Button } from '../Button';
+import { Favorite } from '../Favorite/Favorite';
 
 type Props = {
   name: string,
@@ -12,8 +14,6 @@ type Props = {
   screen: string,
   capacity: string,
   ram: string,
-  year: number,
-  image: string
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -23,8 +23,6 @@ export const ProductCard: React.FC<Props> = ({
   screen,
   capacity,
   ram,
-  year,
-  image
 }) => {
   return (
     <article className={s.productCard}>
@@ -39,7 +37,10 @@ export const ProductCard: React.FC<Props> = ({
       </h3>
 
       <div className={s.productCard__price}>
-        {`$${price}`} <span className={s.productCard__price_oldPrice}>{`$${fullPrice}`}</span>
+        {`$${price}`}
+        <span className={s.productCard__price_oldPrice}>
+          {`$${fullPrice}`}
+        </span>
       </div>
 
       <ul className={s.productCard__specs}>

@@ -1,4 +1,4 @@
 export interface Product<T> {
-  edges: T[],
-  count: number,
+  edges: T[]
+  count: number
 }

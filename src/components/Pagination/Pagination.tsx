@@ -1,12 +1,12 @@
 import React from 'react';
-import s from './Pagination.module.scss';
 import cn from 'classnames';
+import s from './Pagination.module.scss';
 
 export const Pagination: React.FC = () => {
   return (
     <ul className={s.pagination}>
       <li className={s.pagination__item}>
-        <button 
+        <button
           className={s.pagination__link}
         >
           &#60;
@@ -14,7 +14,7 @@ export const Pagination: React.FC = () => {
       </li>
 
       <li className={s.pagination__item}>
-        <button 
+        <button
           className={s.pagination__link}
         >
           1
@@ -22,7 +22,7 @@ export const Pagination: React.FC = () => {
       </li>
 
       <li className={s.pagination__item}>
-        <button 
+        <button
           className={cn(s.pagination__link, s.pagination__link_active)}
         >
           2
@@ -30,7 +30,7 @@ export const Pagination: React.FC = () => {
       </li>
 
       <li className={s.pagination__item}>
-        <button 
+        <button
           className={s.pagination__link}
         >
           &#62;

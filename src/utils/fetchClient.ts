@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 const BASE_URL = 'https://effulgent-elf-0da1cb.netlify.app/.netlify/functions/server';
 
 function wait(delay: number) {
@@ -13,10 +14,12 @@ function request<T>(
   method: RequestMethod = 'GET',
   data: unknown = null,
 ): Promise<T> {
+  // eslint-disable-next-line no-undef
   const options: RequestInit = { method };
 
   if (data) {
     options.body = JSON.stringify(data);
+
     options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
     };

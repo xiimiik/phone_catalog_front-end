@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useState, useCallback } from 'react';
 import Select from 'react-select';
 
@@ -5,15 +6,15 @@ import s from './SelectParams.module.scss';
 import './CustomSelect.scss';
 
 const optionsSorting = [
-  {value: 'newest', label: 'Newest'},
-  {value: 'oldest', label: 'Oldest'},
+  { value: 'newest', label: 'Newest' },
+  { value: 'oldest', label: 'Oldest' },
 ];
 
 const optionsCount = [
-  {value: '8', label: 8},
-  {value: '10', label: 10},
-  {value: '16', label: 16},
-  {value: '24', label: 24},
+  { value: '8', label: 8 },
+  { value: '10', label: 10 },
+  { value: '16', label: 16 },
+  { value: '24', label: 24 },
 ];
 
 export const SelectParams = () => {
@@ -44,7 +45,7 @@ export const SelectParams = () => {
 
           <Select
             className={s.select__container_sort}
-            classNamePrefix='custom_select'
+            classNamePrefix="custom_select"
             options={optionsSorting}
             value={getValueSorting()}
             onChange={handleChangeSorting}
@@ -57,7 +58,7 @@ export const SelectParams = () => {
 
           <Select
             className={s.select__container_count}
-            classNamePrefix='custom_select'
+            classNamePrefix="custom_select"
             options={optionsCount}
             value={getValueCount()}
             onChange={handleChangeCount}

@@ -1,23 +1,23 @@
+/* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import s from './Nav.module.scss';
+import React, { useState } from 'react';
 import cn from 'classnames';
+import s from './Nav.module.scss';
 
 import logoImg from '../../assets/img/Logo.svg';
 import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
-import menuImg from '../../assets/img/Menu.svg';
 
 const navLinks = [
-  {to: "/", text: "home"},
-  {to: "/phones", text: "phones"},
-  {to: "/tablets", text: "tablets"},
-  {to: "/accessories", text: "accessories"},
+  { to: '/', text: 'home' },
+  { to: '/phones', text: 'phones' },
+  { to: '/tablets', text: 'tablets' },
+  { to: '/accessories', text: 'accessories' },
 ];
 
 const boxLinks = [
-  {to: "/favorites", imgSrc: favouritesImg, alt: 'favorites'},
-  {to: "/cart", imgSrc: shoppingBagImg, alt: 'cart'},
+  { to: '/favorites', imgSrc: favouritesImg, alt: 'favorites' },
+  { to: '/cart', imgSrc: shoppingBagImg, alt: 'cart' },
 ];
 
 export const Nav: React.FC = () => {
@@ -30,12 +30,12 @@ export const Nav: React.FC = () => {
     if (activeMenu) {
       document.body.style.overflow = '';
     }
-  }
+  };
 
   const onCloseMenu = () => {
     setActiveMenu(false);
     document.body.style.overflow = '';
-  }
+  };
 
   return (
     <nav className={s.nav}>
@@ -43,7 +43,7 @@ export const Nav: React.FC = () => {
         to="/"
         onClick={onCloseMenu}
       >
-        <img 
+        <img
           src={logoImg}
           alt="Logo"
           className={s.nav__logo}
@@ -52,25 +52,26 @@ export const Nav: React.FC = () => {
 
       <button
         className={cn(s.nav__menu, {
-          [s['nav__menu_active']]: activeMenu,
+          [s.nav__menu_active]: activeMenu,
         })}
         onClick={onOpenMenu}
       >
         <div className={s.nav__menu_wrap}>
-          <span className={s.nav__menu_item}></span>
+          <span className={s.nav__menu_item} />
         </div>
       </button>
 
       <div className={cn(s.nav__wrapper, {
-        [s['nav__wrapper_active']]: activeMenu,
-      })}>
+        [s.nav__wrapper_active]: activeMenu,
+      })}
+      >
         <ul className={s.nav__list}>
           {navLinks.map(({ to, text }) => (
             <li key={text} className={s.nav__item}>
-              <NavLink 
-                to={to} 
+              <NavLink
+                to={to}
                 className={
-                  ({ isActive }) => cn(s.nav__link, {[s['nav__link_active']]: isActive })
+                  ({ isActive }) => cn(s.nav__link, { [s.nav__link_active]: isActive })
                 }
                 onClick={onCloseMenu}
               >
@@ -88,11 +89,11 @@ export const Nav: React.FC = () => {
               className={s.nav__cart_item}
               onClick={onCloseMenu}
             >
-              <img src={imgSrc} alt={alt}/>
+              <img src={imgSrc} alt={alt} />
             </NavLink>
           ))}
         </div>
       </div>
     </nav>
   );
-}
+};
