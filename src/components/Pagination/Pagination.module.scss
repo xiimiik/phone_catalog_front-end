@@ -5,18 +5,14 @@
   display: flex;
   justify-content: center;
   margin-top: 24px;
-  position: fixed;
-  bottom: 364px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 64px;
 
   @include onTablet {
     margin-top: 40px;
-    bottom: 164px;
   }
 
   @include onDesktop {
-    bottom: 180px;
+    margin-bottom: 80px;
   }
 
   &__item {
