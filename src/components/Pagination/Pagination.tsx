@@ -30,57 +30,65 @@ export const Pagination: React.FC<Props> = ({
 
   const lastPage = getPages(phonesLength).length;
 
+  if (currentPage > getPages(phonesLength).length
+    && getPages(phonesLength).length !== 0) {
+    setCurrentPage(lastPage);
+    setSelectOffset(lastPage);
+  }
+
   const checkPage = (page: number) => {
     return currentPage === page;
   };
 
   return (
-    <ul className={s.pagination}>
-      <li className={s.pagination__item}>
-        <button
-          onClick={() => {
-            if (!checkPage(1)) {
-              setSelectOffset(currentPage - 1);
-              setCurrentPage(currentPage - 1);
-            }
-          }}
-          disabled={checkPage(1)}
-          className={s.pagination__link}
-        >
-          &#60;
-        </button>
-      </li>
-
-      {getPages(phonesLength).map(page => (
-        <li key={page} className={s.pagination__item}>
+    <div className={s.pagination}>
+      <ul className={s.pagination__list}>
+        <li className={s.pagination__item}>
           <button
             onClick={() => {
-              setSelectOffset(page);
-              setCurrentPage(page);
+              if (!checkPage(1)) {
+                setSelectOffset(currentPage - 1);
+                setCurrentPage(currentPage - 1);
+              }
             }}
-            className={cn(s.pagination__link, {
-              [s.pagination__link_active]: selectOffset === page,
-            })}
+            disabled={checkPage(1)}
+            className={s.pagination__link}
           >
-            {page}
+            &#60;
           </button>
         </li>
-      ))}
 
-      <li className={s.pagination__item}>
-        <button
-          onClick={() => {
-            if (!checkPage(lastPage)) {
-              setSelectOffset(currentPage + 1);
-              setCurrentPage(currentPage + 1);
-            }
-          }}
-          disabled={checkPage(lastPage)}
-          className={s.pagination__link}
-        >
-          &#62;
-        </button>
-      </li>
-    </ul>
+        {getPages(phonesLength).map(page => (
+          <li key={page} className={s.pagination__item}>
+            <button
+              onClick={() => {
+                setSelectOffset(page);
+                setCurrentPage(page);
+              }}
+              className={cn(s.pagination__link, {
+                [s.pagination__link_active]: selectOffset === page,
+              })}
+            >
+              {page}
+            </button>
+          </li>
+        ))}
+
+        <li className={s.pagination__item}>
+          <button
+            onClick={() => {
+              if (!checkPage(lastPage)) {
+                setSelectOffset(currentPage + 1);
+                setCurrentPage(currentPage + 1);
+              }
+            }}
+            disabled={checkPage(lastPage)}
+            className={s.pagination__link}
+          >
+            &#62;
+          </button>
+        </li>
+      </ul>
+    </div>
   );
 };

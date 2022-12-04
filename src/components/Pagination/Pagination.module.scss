@@ -2,13 +2,26 @@
 @import '../../styles/mixins';
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-  margin-bottom: 64px;
+  margin: 24px auto 64px;
+  width: 270px;
+  overflow-x: scroll;
+  padding: 15px 5px;
+  border-radius: 20px;
 
+  &__list {
+    display: flex;
+
+    @include onTablet {
+      justify-content: center;
+    }
+  }
+  
   @include onTablet {
+    width: 100%;
     margin-top: 40px;
+    overflow-x: auto;
+    background-color: transparent;
+    box-shadow: none;
   }
 
   @include onDesktop {

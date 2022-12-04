@@ -31,7 +31,10 @@ export const ProductCard: React.FC<Props> = ({
         <img src={` https://effulgent-elf-0da1cb.netlify.app/${image}`} alt="appleProduct" />
       </Link>
 
-      <h3 className={s.productCard__title}>
+      <h3
+        className={s.productCard__title}
+        title={name.toString()}
+      >
         <Link to="/item" className={s.productCard__link}>
           {`${name} (iMT9G2FS/A)`}
         </Link>

@@ -46,6 +46,7 @@ export const SelectParams: React.FC<Props> = ({
       setSorting('new', 'desc');
       break;
 
+    case 'default':
     default:
       setSorting('', '');
   }

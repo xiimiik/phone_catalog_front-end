@@ -21,7 +21,7 @@ export const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [selectLimit, setSelectLimit] = useState(optionsCount[2].value);
-  const [selectSort, setSelectSort] = useState(optionsSorting[2].value);
+  const [selectSort, setSelectSort] = useState(optionsSorting[0].value);
   const [selectOffset, setSelectOffset] = useState(1);
 
   const [orderSort, setOrderSort] = useState('');
