@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container } from '../Container';
 import s from './NotFoundPage.module.scss';
-import img from '../../assets/img/404_page.png';
+import img from '../../assets/img/iPhone-14.png';
 
 export const NotFoundPage = () => (
   <Container>

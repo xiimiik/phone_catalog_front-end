@@ -5,6 +5,7 @@
   &__control {
     cursor: pointer !important;
     border-radius: $radius !important;
+    background-color: $hoverBg-color !important;
 
     .custom_select__dropdown-indicator {
       transform: rotate(0deg) !important;
