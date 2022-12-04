@@ -7,7 +7,7 @@ import { CartPage } from '../pages/CartPage';
 import { ItemCardPage } from '../pages/ItemCardPage';
 import { NotYet } from '../pages/NotYet';
 import { Footer } from '../components/Footer';
-import { NotFoundPage } from '../pages/NotFoundPage';
+import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
 
 import s from './App.module.scss';
 
