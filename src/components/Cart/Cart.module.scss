@@ -1,0 +1,38 @@
+@import "../../styles/mixins";
+@import "../../styles/extends";
+@import '../../styles/vars';
+
+.cart {
+
+  &__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    
+    gap: 10px;
+    margin-bottom: 16px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+
+  &__title {
+    margin-bottom: 32px;
+
+    @extend %main-title-text;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+  }
+}
