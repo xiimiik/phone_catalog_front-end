@@ -60,9 +60,9 @@ export const ProductInfo = () => {
         <h2 className={s.product__about_title}>About</h2>
 
         <article className={s.product__about_item}>
-          <h3 className={s.product__about_item_title}>
+          <h4 className={s.product__about_item_title}>
             And then there was Pro
-          </h3>
+          </h4>
 
           <div className={s.product__about_item_text}>
             <p>
@@ -84,9 +84,9 @@ export const ProductInfo = () => {
         </article>
 
         <article className={s.product__about_item}>
-          <h3 className={s.product__about_item_title}>
+          <h4 className={s.product__about_item_title}>
             Camera
-          </h3>
+          </h4>
 
           <div className={s.product__about_item_text}>
             <p>
@@ -108,11 +108,11 @@ export const ProductInfo = () => {
         </article>
 
         <article className={s.product__about_item}>
-          <h3 className={s.product__about_item_title}>
+          <h4 className={s.product__about_item_title}>
             Shoot it. Flip it. Zoom it. Crop it.
             {' '}
             Cut it. Light it. Tweak it. Love it.
-          </h3>
+          </h4>
 
           <div className={s.product__about_item_text}>
             <p>

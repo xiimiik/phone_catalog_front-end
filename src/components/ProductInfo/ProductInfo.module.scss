@@ -103,8 +103,30 @@
   &__about {
     margin-bottom: 56px;
 
+    &_title {
+      @extend %product-title;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $elements-color;
+    }
+
     @include onTablet {
       margin-bottom: 64px;
+    }
+
+    &_item {
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+
+      &_title {
+        @extend %about-title;
+        margin-bottom: 16px; 
+      }
+
+      &_text {
+        color: $secondary-color;
+      }
     }
   }
 }
