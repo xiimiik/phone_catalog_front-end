@@ -56,6 +56,84 @@ export const ProductInfo = () => {
         </div>
       </div>
 
+      <div className={s.product__about}>
+        <h2 className={s.product__about_title}>About</h2>
+
+        <article className={s.product__about_item}>
+          <h3 className={s.product__about_item_title}>
+            And then there was Pro
+          </h3>
+
+          <div className={s.product__about_item_text}>
+            <p>
+              A transformative triple‑camera system that
+              {' '}
+              adds tons of capability without complexity.
+            </p>
+
+            <p>
+              An unprecedented leap in battery life.
+              {' '}
+              And a mind‑blowing chip that doubles down on machine learning
+              {' '}
+              and pushes the boundaries of what a smartphone can do.
+              {' '}
+              Welcome to the first iPhone powerful enough to be called Pro.
+            </p>
+          </div>
+        </article>
+
+        <article className={s.product__about_item}>
+          <h3 className={s.product__about_item_title}>
+            Camera
+          </h3>
+
+          <div className={s.product__about_item_text}>
+            <p>
+              A transformative triple‑camera system that
+              {' '}
+              adds tons of capability without complexity.
+            </p>
+
+            <p>
+              An unprecedented leap in battery life.
+              {' '}
+              And a mind‑blowing chip that doubles down on machine learning
+              {' '}
+              and pushes the boundaries of what a smartphone can do.
+              {' '}
+              Welcome to the first iPhone powerful enough to be called Pro.
+            </p>
+          </div>
+        </article>
+
+        <article className={s.product__about_item}>
+          <h3 className={s.product__about_item_title}>
+            Shoot it. Flip it. Zoom it. Crop it.
+            {' '}
+            Cut it. Light it. Tweak it. Love it.
+          </h3>
+
+          <div className={s.product__about_item_text}>
+            <p>
+              A transformative triple‑camera system that
+              {' '}
+              adds tons of capability without complexity.
+            </p>
+
+            <p>
+              An unprecedented leap in battery life.
+              {' '}
+              And a mind‑blowing chip that doubles down on machine learning
+              {' '}
+              and pushes the boundaries of what a smartphone can do.
+              {' '}
+              Welcome to the first iPhone powerful enough to be called Pro.
+            </p>
+          </div>
+        </article>
+      </div>
+
     </div>
   );
 };

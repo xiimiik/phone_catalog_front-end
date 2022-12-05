@@ -99,4 +99,12 @@
       font-weight: 700;
     }
   }
+
+  &__about {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+  }
 }
