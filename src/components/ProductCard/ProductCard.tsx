@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 import s from './ProductCard.module.scss';
 
-import { Button } from '../Button';
-import { Favorite } from '../Favorite/Favorite';
+import { ProductAction } from '../ProductAction';
 
 type Props = {
   name: string,
@@ -65,11 +64,7 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
 
       <footer className={s.productCard__action}>
-        <div className={s.productCard__btn}>
-          <Button />
-        </div>
-
-        <Favorite />
+        <ProductAction />
       </footer>
     </article>
   );

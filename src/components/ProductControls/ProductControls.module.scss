@@ -13,6 +13,11 @@
   &__code {
     @extend %small-text;
     color: $icons-color;
+
+    @include onDesktop {
+      position: absolute;
+      right: 0;
+    }
   }
 
   &__item {
