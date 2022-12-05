@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front-end/static/css/main.557255fb.css",
-    "main.js": "/phone_catalog_front-end/static/js/main.822928eb.js",
+    "main.css": "/phone_catalog_front-end/static/css/main.2ce9cf1a.css",
+    "main.js": "/phone_catalog_front-end/static/js/main.cadc2c5d.js",
     "static/media/promo-slide-1.png": "/phone_catalog_front-end/static/media/promo-slide-1.bddd5e1341b58cc65bfe.png",
     "static/media/Logo.svg": "/phone_catalog_front-end/static/media/Logo.da5e135771b348c36e102c13c95bf350.svg",
+    "static/media/iPhone-14.png": "/phone_catalog_front-end/static/media/iPhone-14.11ba09fd0054da9cc14b.png",
     "static/media/SFProDisplay-Semibold.woff2": "/phone_catalog_front-end/static/media/SFProDisplay-Semibold.3926eb65ce4420a81930.woff2",
     "static/media/SFProDisplay-Regular.woff2": "/phone_catalog_front-end/static/media/SFProDisplay-Regular.d5ff9f6824d2c6607361.woff2",
     "static/media/Mont-SemiBold.woff2": "/phone_catalog_front-end/static/media/Mont-SemiBold.95ab478c134f9e9da545.woff2",
@@ -16,12 +17,13 @@
     "static/media/ButtonDelete.svg": "/phone_catalog_front-end/static/media/ButtonDelete.cdfb6ae506fe360c9ad495bfc61f521d.svg",
     "static/media/Plus.svg": "/phone_catalog_front-end/static/media/Plus.d886cbead86167dad78ed7d08416c466.svg",
     "static/media/ScrollUp.svg": "/phone_catalog_front-end/static/media/ScrollUp.411b5a1b4b9eda1837e852a741117fc2.svg",
+    "static/media/LeftArrow.svg": "/phone_catalog_front-end/static/media/LeftArrow.0b08164152d124b68b1db8ba6716975f.svg",
     "static/media/Minus.svg": "/phone_catalog_front-end/static/media/Minus.6147cb5db4c975f91de08b377dc8a814.svg",
-    "main.557255fb.css.map": "/phone_catalog_front-end/static/css/main.557255fb.css.map",
-    "main.822928eb.js.map": "/phone_catalog_front-end/static/js/main.822928eb.js.map"
+    "main.2ce9cf1a.css.map": "/phone_catalog_front-end/static/css/main.2ce9cf1a.css.map",
+    "main.cadc2c5d.js.map": "/phone_catalog_front-end/static/js/main.cadc2c5d.js.map"
   },
   "entrypoints": [
-    "static/css/main.557255fb.css",
-    "static/js/main.822928eb.js"
+    "static/css/main.2ce9cf1a.css",
+    "static/js/main.cadc2c5d.js"
   ]
 }
