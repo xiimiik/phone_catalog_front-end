@@ -32,10 +32,11 @@
 
   &__gallery {
     margin-bottom: 40px;
-    margin-right: 30px;
+    margin-right: 0px;
 
     @include onTablet {
       margin-bottom: 0;
+      margin-right: 17px;
     }
   }
 

@@ -55,7 +55,7 @@ export const SelectParams: React.FC<Props> = ({
 
   useEffect(() => {
     setSelect(selectSorting);
-  }, []);
+  }, [selectSorting]);
 
   const getValueSorting = useCallback(() => {
     return selectSorting
