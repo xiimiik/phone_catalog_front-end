@@ -1,0 +1,22 @@
+@import '../../styles/vars';
+@import '../../styles/extends';
+@import '../../styles/mixins';
+
+.product {
+  &__title {
+    @extend %product-title;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__gallery {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+}
