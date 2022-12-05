@@ -1,5 +1,6 @@
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { ProductControls } from '../ProductControls';
+import { ProductAction } from '../ProductAction';
 
 import s from './ProductInfo.module.scss';
 
@@ -17,6 +18,10 @@ export const ProductInfo = () => {
 
         <div className={s.product__controls}>
           <ProductControls />
+        </div>
+
+        <div className={s.product__action}>
+          <ProductAction />
         </div>
       </div>
 
