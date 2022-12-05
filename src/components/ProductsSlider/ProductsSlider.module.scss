@@ -1,0 +1,48 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+@import '../../styles/extends';
+
+.slider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0 0 $mob-side-padding;
+
+  @include onTablet {
+    padding: 0 0 0 $tab-side-padding;
+  }
+
+  @include onDesktop {
+    padding: 0 $desk-side-padding;
+  }
+
+  &__title {
+    @extend %main-subtitle-text;
+    
+    margin-bottom: 24px;
+  }
+
+  &__swiper {
+    height: 440px;
+
+    @include onTablet {
+      height: 520px;
+    }
+
+    @include onDesktop {
+      width: #{1200 - $desk-side-padding * 2};
+    }
+  }
+
+  &__item {
+    width: 216px !important;
+
+    @include onTablet {
+      width: 240px !important;
+    }
+
+    @include onDesktop {
+      width: 270px !important;
+    }
+  }
+}

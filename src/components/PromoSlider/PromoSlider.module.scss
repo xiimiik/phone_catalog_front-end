@@ -5,14 +5,8 @@
   width: 100%;
 
   :global(.swiper-pagination) {
-    display: none;
-
     position: fixed;
     bottom: -30px;
-
-    @include onTablet {
-      display: block;
-    }
   }
 
   :global(.swiper-pagination-bullet) {
@@ -86,9 +80,10 @@
   }
 
   &__wrapper {
+    transform: translate(0, 0);
+    
     @include onTablet {
       padding: 0 50px;
-      transform: translate(0, 0);
     }
   }
 
