@@ -1,0 +1,24 @@
+@import "../../styles/extends";
+@import "../../styles/mixins";
+
+.page {
+  &__title {
+    @extend %main-title-text;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__subtitle {
+    @extend %main-subtitle-text;
+    
+    margin-bottom: 24px;
+  }
+}
