@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import Select from 'react-select';
 
@@ -29,27 +29,33 @@ export const SelectParams: React.FC<Props> = ({
   const [selectSorting, setSelectSorting] = useState(selectSort);
   const [selectCount, setSelectCount] = useState(selectLimit);
 
-  switch (selectSorting) {
-    case 'ascPrice':
-      setSorting('price', 'asc');
-      break;
+  const setSelect = (sorting: string) => {
+    switch (sorting) {
+      case 'ascPrice':
+        setSorting('price', 'asc');
+        break;
 
-    case 'descPrice':
-      setSorting('price', 'desc');
-      break;
+      case 'descPrice':
+        setSorting('price', 'desc');
+        break;
 
-    case 'ascYear':
-      setSorting('new', 'asc');
-      break;
+      case 'ascYear':
+        setSorting('new', 'asc');
+        break;
 
-    case 'descYear':
-      setSorting('new', 'desc');
-      break;
+      case 'descYear':
+        setSorting('new', 'desc');
+        break;
 
-    case 'default':
-    default:
-      setSorting('', '');
-  }
+      case 'default':
+      default:
+        setSorting('', '');
+    }
+  };
+
+  useEffect(() => {
+    setSelect(selectSorting);
+  }, []);
 
   const getValueSorting = useCallback(() => {
     return selectSorting

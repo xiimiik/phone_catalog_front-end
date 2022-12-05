@@ -42,11 +42,7 @@
   &__info {
     flex-grow: 1;
     
-    @include onTablet {
-      max-width: 237px;
-    }
-
-    @include onDesktop {
+    @include onLaptop {
       max-width: 320px;
     }
   }
@@ -103,6 +99,15 @@
   &__about {
     margin-bottom: 56px;
 
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      display: flex;
+      margin-bottom: 0;
+    }
+
     &_title {
       @extend %product-title;
       margin-bottom: 32px;
@@ -127,6 +132,41 @@
       &_text {
         color: $secondary-color;
       }
+    }
+  }
+
+  &__description {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      max-width: 560px;
+      margin-right: 64px;
+    }
+  }
+
+  &__specs {
+    @include onDesktop {
+      flex-grow: 1;
+    }
+
+    &_name {
+      font-weight: 500;
+      color: $secondary-color;
+    }
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    &_value {
+      font-weight: 600;
     }
   }
 }
