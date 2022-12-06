@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import {
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
+
 import { Phone } from '../../types/Phone';
+import { getPhonesByGroup } from '../../api/phones';
 import s from './HomePage.module.scss';
 import { Categories } from '../../components/Categories';
 import { Container } from '../../components/Container';
@@ -7,73 +13,34 @@ import { PageSection } from '../../components/PageSection';
 import { PromoSlider } from '../../components/PromoSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Loader } from '../../components/Loader';
-
-const arr: Phone[] = [
-  {
-    id: '11',
-    category: 'phones',
-    phoneId: 'apple-iphone-11-pro-max-256gb-gold',
-    itemId: 'apple-iphone-11-pro-max-256gb-gold',
-    name: 'Apple iPhone 11 Pro Max 256GB Gold',
-    fullPrice: 1776,
-    price: 1680,
-    screen: '6.5\' OLED',
-    capacity: '256GB',
-    color: 'gold',
-    ram: '4GB',
-    year: 2019,
-    image: 'img/phones/apple-iphone-11-pro-max/gold/00.jpg',
-  },
-  {
-    id: '11',
-    category: 'phones',
-    phoneId: 'apple-iphone-11-pro-max-256gb-gold',
-    itemId: 'apple-iphone-11-pro-max-256gb-gold',
-    name: 'Apple iPhone 11 Pro Max 256GB Gold',
-    fullPrice: 1776,
-    price: 1680,
-    screen: '6.5\' OLED',
-    capacity: '256GB',
-    color: 'gold',
-    ram: '4GB',
-    year: 2019,
-    image: 'img/phones/apple-iphone-11-pro-max/gold/00.jpg',
-  },
-  {
-    id: '11',
-    category: 'phones',
-    phoneId: 'apple-iphone-11-pro-max-256gb-gold',
-    itemId: 'apple-iphone-11-pro-max-256gb-gold',
-    name: 'Apple iPhone 11 Pro Max 256GB Gold',
-    fullPrice: 1776,
-    price: 1680,
-    screen: '6.5\' OLED',
-    capacity: '256GB',
-    color: 'gold',
-    ram: '4GB',
-    year: 2019,
-    image: 'img/phones/apple-iphone-11-pro-max/gold/00.jpg',
-  },
-  {
-    id: '11',
-    category: 'phones',
-    phoneId: 'apple-iphone-11-pro-max-256gb-gold',
-    itemId: 'apple-iphone-11-pro-max-256gb-gold',
-    name: 'Apple iPhone 11 Pro Max 256GB Gold',
-    fullPrice: 1776,
-    price: 1680,
-    screen: '6.5\' OLED',
-    capacity: '256GB',
-    color: 'gold',
-    ram: '4GB',
-    year: 2019,
-    image: 'img/phones/apple-iphone-11-pro-max/gold/00.jpg',
-  },
-];
+import { Group } from '../../types/Group';
 
 export const HomePage = () => {
-  const [phones] = useState<Phone[]>(arr);
-  const [isLoading] = useState(false);
+  const [newPhones, setNewPhones] = useState<Phone[]>([]);
+  const [discountPhones, setDiscountPhones] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [hasError, setHasError] = useState(false);
+
+  const getProductsFromServer = useCallback(async () => {
+    try {
+      setIsLoading(true);
+
+      const newProds = await getPhonesByGroup(Group.New);
+      const discProds = await getPhonesByGroup(Group.Discount);
+
+      setNewPhones(newProds.edges);
+      setDiscountPhones(discProds.edges);
+    } catch (error) {
+      setHasError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getProductsFromServer();
+  }, []);
 
   return (
     <>
@@ -90,7 +57,7 @@ export const HomePage = () => {
           ? <Loader />
           : (
             <ProductsSlider<Phone>
-              products={phones}
+              products={newPhones}
               title="Brand new models"
             />
           )}
@@ -108,7 +75,7 @@ export const HomePage = () => {
           ? <Loader />
           : (
             <ProductsSlider<Phone>
-              products={phones}
+              products={discountPhones}
               title="Hot prices"
             />
           )}
