@@ -31,6 +31,18 @@
   line-height: 26px;
 }
 
+%main-subtitle-text {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
 %upper-text {
   font-size: 12px;
   line-height: 11px;
