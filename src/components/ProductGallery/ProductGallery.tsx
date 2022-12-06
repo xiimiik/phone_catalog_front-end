@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Thumbs } from 'swiper';
+import SwiperCore, { Thumbs, EffectFade } from 'swiper';
 
 import 'swiper/scss';
 import 'swiper/scss/thumbs';
@@ -15,7 +15,8 @@ export const ProductGallery = () => {
     <div className={s.gallery}>
       <Swiper
         className={s.product__image_slider}
-        modules={[Thumbs]}
+        modules={[Thumbs, EffectFade]}
+        effect="fade"
         spaceBetween={50}
         slidesPerView={1}
         thumbs={{
