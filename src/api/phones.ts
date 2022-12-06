@@ -2,6 +2,7 @@ import { client } from '../utils/fetchClient';
 import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
 import { Group } from '../types/Group';
+import { PhoneFullInfo } from '../types/PhoneFullInfo';
 
 export const getPhones = async () => {
   const phones = await client.get<Product<Phone>>('/products/phones');
@@ -25,4 +26,10 @@ export const getPhonesWithLimit = async (
     .get<Product<Phone>>(`/products/phones?limit=${limit}&offset=${offset}&order=${order}&dir=${dir}`);
 
   return phones || null;
+};
+
+export const getPhone = async (phoneId: string) => {
+  const phone = client.get<PhoneFullInfo>(`/products/phones/${phoneId}`);
+
+  return phone || null;
 };

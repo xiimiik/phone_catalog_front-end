@@ -1,0 +1,78 @@
+@import '../../styles/extends';
+@import '../../styles/vars';
+
+.controls {
+  &__title {
+    @extend %small-text;
+    margin-bottom: 8px;
+    color: $secondary-color; 
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__code {
+    @extend %small-text;
+    color: $icons-color;
+
+    @include onDesktop {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__item {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+
+    &:not(:first-child) {
+      padding-top: 24px;
+    }
+  }
+
+  &__params {
+    display: flex;
+
+    &_item {
+      cursor: pointer;
+
+      &_wrap {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $elements-color;
+        border-radius: 50%;
+        padding: 3px;
+
+        transition: border-color 0.2s ease;
+
+        &_active {
+          border-color: $primary-color;
+        }
+      }
+
+      &_inner {
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+
+    &_capacity {
+      @extend %button-text;
+      display: flex;
+      padding: 4px 8px;
+      font-weight: 500;
+
+      border: 1px solid $icons-color;
+      border-radius: 4px;
+
+      &_active {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
+}
