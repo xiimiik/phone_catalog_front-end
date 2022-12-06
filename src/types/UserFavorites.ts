@@ -1,6 +1,6 @@
-import { Phone } from './Phone';
-
 export interface UserFavorites {
-  favourites: Phone[],
-  setFavourites: (phone: Phone[]) => void,
+  favouritesIds: string[],
+  setFavouritesIds: (ids: string[]) => void,
+  cartIds: string[],
+  setCartIds: (ids: string[]) => void,
 }

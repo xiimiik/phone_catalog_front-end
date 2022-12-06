@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Phone } from '../types/Phone';
 
-export const useStorage = (initialValue: Phone[], key: string) => {
+export const useStorage = (initialValue: string[], key: string) => {
   const getValue = () => {
     const storage = localStorage.getItem(key);
 
