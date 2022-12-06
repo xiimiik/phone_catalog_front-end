@@ -4,26 +4,23 @@ import { Link } from 'react-router-dom';
 import s from './ProductCard.module.scss';
 
 import { ProductAction } from '../ProductAction';
+import { Phone } from '../../types/Phone';
 
 type Props = {
-  name: string,
-  fullPrice: number,
-  price: number,
-  screen: string,
-  capacity: string,
-  ram: string,
-  image: string,
+  phone: Phone
 };
 
-export const ProductCard: React.FC<Props> = ({
-  name,
-  fullPrice,
-  price,
-  screen,
-  capacity,
-  ram,
-  image,
-}) => {
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const {
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = phone;
+
   return (
     <article className={s.productCard}>
       <Link to="/item" className={s.productCard__img}>

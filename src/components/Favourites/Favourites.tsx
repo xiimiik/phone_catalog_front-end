@@ -21,8 +21,7 @@ export const Favourites = () => {
     async () => {
       try {
         setIsLoading(true);
-        const phonesFromServer
-          = await getPhonesByIds(favouritesIds);
+        const phonesFromServer = await getPhonesByIds(favouritesIds);
 
         setFavourites(phonesFromServer.edges);
       } catch (error: any) {
@@ -51,26 +50,11 @@ export const Favourites = () => {
         <Loader />
       ) : (
         <div className={s.favourites__list}>
-          {favorites?.map(({
-            id,
-            name,
-            fullPrice,
-            price,
-            screen,
-            capacity,
-            ram,
-            image,
-          }) => {
+          {favorites?.map(phone => {
             return (
               <ProductCard
-                key={id}
-                name={name}
-                fullPrice={fullPrice}
-                price={price}
-                screen={screen}
-                capacity={capacity}
-                ram={ram}
-                image={image}
+                key={phone.id}
+                phone={phone}
               />
             );
           })}
