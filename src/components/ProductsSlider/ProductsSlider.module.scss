@@ -8,12 +8,74 @@
   margin: 0 auto;
   padding: 0 0 0 $mob-side-padding;
 
+  transform: translate(0, 0);
+
   @include onTablet {
     padding: 0 0 0 $tab-side-padding;
   }
 
   @include onDesktop {
     padding: 0 $desk-side-padding;
+  }
+
+  :global(.swiper-button-prev),
+  :global(.swiper-button-next) {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  :global(.swiper-button-prev::after),
+  :global(.swiper-button-next::after) {
+    position: fixed;
+
+    transform: translateY(#{-($slider-mob-height / 1.7)});
+
+    width: $slider-button-width;
+    height: $slider-button-width;
+    border: 1px solid $secondary-color;
+    border-radius: 50%;
+
+    font-size: 14px;
+    line-height: $slider-button-width;
+    color: $black-color;
+    text-align: center;
+
+    @include onTablet {
+      transform: translateY(#{-($slider-tab-height / 1.7)});
+    }
+  }
+
+  :global(.swiper-button-prev::after) {
+    right: #{$mob-side-padding * 2 + $slider-button-width};
+
+    @include onTablet {
+      right: #{$tab-side-padding * 2 + $slider-button-width};
+    }
+
+    @include onDesktop {
+      right: #{$desk-side-padding * 2 + $slider-button-width};
+    }
+  }
+
+  :global(.swiper-button-next::after) {
+    right: $mob-side-padding;
+
+    @include onTablet {
+      right: $tab-side-padding;
+    }
+
+    @include onDesktop {
+      right: $desk-side-padding;
+    }
   }
 
   &__title {
@@ -23,10 +85,10 @@
   }
 
   &__swiper {
-    height: 440px;
+    height: $slider-mob-height;
 
     @include onTablet {
-      height: 520px;
+      height: $slider-tab-height;
     }
 
     @include onDesktop {
