@@ -2,18 +2,142 @@
 @import '../../styles/vars';
 
 .promo {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+
+  :global(.swiper-pagination) {
+    position: fixed;
+    bottom: -30px;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 14px;
+    height: 4px;
+    border-radius: 0;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $primary-color;
+  }
+
+  :global(.swiper-button-prev),
+  :global(.swiper-button-next) {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  :global(.swiper-button-prev::after),
+  :global(.swiper-button-next::after) {
+    display: none;
+
+    position: fixed;
+
+    width: 32px;
+    border: 1px solid $secondary-color;
+    border-radius: 48px;
+
+    font-size: 14px;
+    color: $black-color;
+    text-align: center;
+
+    @include onTablet {
+      display: block;
+
+      height: $tab-header-swiper-height;
+      line-height: $tab-header-swiper-height;
+    }
+
+    @include onDesktop {
+      height: $desk-header-swiper-height;
+      line-height: $desk-header-swiper-height;
+    }
+  }
+
+  :global(.swiper-button-prev::after) {
+    left: 0;
+  }
+
+  :global(.swiper-button-next::after) {
+    right: 0;
+  }
 
   @include onTablet {
+    margin: 0 auto;
     padding: 0 $tab-side-padding;
   }
 
   @include onDesktop {
+    max-width: 1200px;
     padding: 0 $desk-side-padding;
+  }
+
+  &__wrapper {
+    transform: translate(0, 0);
+    
+    @include onTablet {
+      padding: 0 50px;
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+    padding-top: 100%;
+
+    @include onTablet {
+      padding-top: 0;
+      height: $tab-header-swiper-height;
+      border-radius: $radius;
+    }
+
+    @include onDesktop {
+      height: $desk-header-swiper-height;
+    }
   }
 
   &__image {
     width: 100%;
+    padding-top: 100%;
+    margin-top: -100%;
+    display: block;
+    background-size: cover;
+    background-position: top center;
+
+    @include onTablet {
+      padding-top: 0;
+      margin-top: 0;
+      height: 100%;
+    }
+
+    &_1 {
+      background-image: url(../../assets/img/promo-slide-1-mob.png);
+
+      @include onTablet {
+        background-image: url(../../assets/img/promo-slide-1.png);
+      }
+    }
+
+    &_2 {
+      background-image: url(../../assets/img/promo-slide-2-mob.png);
+
+      @include onTablet {
+        background-image: url(../../assets/img/promo-slide-2.png);
+      }
+    }
+
+    &_3 {
+      background-image: url(../../assets/img/promo-slide-3-mob.png);
+
+      @include onTablet {
+        background-image: url(../../assets/img/promo-slide-3.png);
+      }
+    }
   }
 }
