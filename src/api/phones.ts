@@ -22,7 +22,9 @@ export const getPhonesWithLimit = async (
 };
 
 export const getPhonesByIds = async (phoneId: string[]) => {
-  const phone = client.get<Product<Phone>>(`/users/favorites?ids=?ids="${phoneId.join(',')}"`);
+  // eslint-disable-next-line no-console
+  console.log(phoneId.join(','));
+  const phone = client.get<Phone[]>(`/users/favorites?ids=${phoneId.join(',')}`);
 
   return phone || null;
 };
