@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { HomePage } from '../pages/HomePage/HomePage';
+import { HomePage } from '../pages/HomePage';
 import { CatalogPage } from '../pages/CatalogPage';
 import { Nav } from '../components/Nav';
 import { FavoritesPage } from '../pages/FavoritesPage';
@@ -8,13 +8,13 @@ import { ItemCardPage } from '../pages/ItemCardPage';
 import { NotYet } from '../pages/NotYet';
 import { Footer } from '../components/Footer';
 import { NotFoundPage } from '../components/NotFoundPage';
-import { UserFavouritesProvider } from '../context/Context';
+import { UserContextProvider } from '../context/Context';
 
 import s from './App.module.scss';
 
 export function App() {
   return (
-    <UserFavouritesProvider>
+    <UserContextProvider>
       <div className={s.wrapper}>
         <Nav />
 
@@ -37,6 +37,6 @@ export function App() {
 
         <Footer />
       </div>
-    </UserFavouritesProvider>
+    </UserContextProvider>
   );
 }

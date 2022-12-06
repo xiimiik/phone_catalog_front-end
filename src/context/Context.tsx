@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import { UserFavorites } from '../types/UserFavorites';
+import { UserContextI } from '../types/UserContextI';
 import { useStorage } from '../utils/useStorage';
 
-export const UserFavourites = React.createContext<UserFavorites>({
+export const UserContext = React.createContext<UserContextI>({
   favouritesIds: [],
   setFavouritesIds: () => {},
   cartIds: [],
@@ -10,12 +10,12 @@ export const UserFavourites = React.createContext<UserFavorites>({
 });
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode
 };
 
-export const UserFavouritesProvider: React.FC<Props> = ({ children }) => {
+export const UserContextProvider: React.FC<Props> = ({ children }) => {
   const [favouritesIds, setFavouritesIds] = useStorage([], 'Favorite');
-  const [cartIds, setCartIds] = useStorage([], 'Favorite');
+  const [cartIds, setCartIds] = useStorage([], 'Cart');
 
   const contextValues = {
     favouritesIds,
@@ -25,8 +25,8 @@ export const UserFavouritesProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <UserFavourites.Provider value={contextValues}>
+    <UserContext.Provider value={contextValues}>
       { children }
-    </UserFavourites.Provider>
+    </UserContext.Provider>
   );
 };
