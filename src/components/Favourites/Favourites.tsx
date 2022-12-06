@@ -23,7 +23,7 @@ export const Favourites = () => {
         setIsLoading(true);
         const phonesFromServer = await getPhonesByIds(favouritesIds);
 
-        setFavourites(phonesFromServer.edges);
+        setFavourites(phonesFromServer);
       } catch (error: any) {
         throw new Error(error.message);
       } finally {

@@ -12,6 +12,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const {
+    id,
     name,
     fullPrice,
     price,
@@ -61,7 +62,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <footer className={s.productCard__action}>
-        <ProductAction />
+        <ProductAction id={id} />
       </footer>
     </article>
   );
