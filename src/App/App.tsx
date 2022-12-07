@@ -28,8 +28,13 @@ export function App() {
               <Route path=":phoneId" element={<ItemCardPage />} />
             </Route>
 
-            <Route path="/tablets" element={<NotYet />} />
-            <Route path="/accessories" element={<NotYet />} />
+            <Route path="tablets">
+              <Route index element={<NotYet />} />
+            </Route>
+
+            <Route path="accessories">
+              <Route index element={<NotYet />} />
+            </Route>
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
