@@ -1,4 +1,5 @@
 @import '../styles/vars';
+@import '../styles/mixins';
 
 .wrapper {
   min-height: 100vh;
@@ -8,6 +9,11 @@
 
 .main {
   padding-top: 24px;
+  padding-bottom: 64px;
   flex: 1 1 auto;
   background-color: $hoverBg-color;
+
+  @include onDesktop {
+    padding-bottom: 81px;
+  }
 }

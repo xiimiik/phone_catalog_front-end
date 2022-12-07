@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <article className={s.productCard}>
-      <Link to="/item" className={s.productCard__img}>
+      <Link to={`/phones/${phoneId}`} className={s.productCard__img}>
         <img src={` https://effulgent-elf-0da1cb.netlify.app/${image}`} alt="appleProduct" />
       </Link>
 
@@ -32,7 +32,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         className={s.productCard__title}
         title={name.toString()}
       >
-        <Link to="/item" className={s.productCard__link}>
+        <Link to={`/phones/${phoneId}`} className={s.productCard__link}>
           {`${name} (iMT9G2FS/A)`}
         </Link>
       </h3>

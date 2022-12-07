@@ -38,6 +38,10 @@
       margin-bottom: 0;
       margin-right: 17px;
     }
+
+    @include onDesktop {
+      margin-right: 64px;
+    }
   }
 
   &__info {
@@ -168,6 +172,7 @@
 
     &_value {
       font-weight: 600;
+      text-align: right;
     }
   }
 }

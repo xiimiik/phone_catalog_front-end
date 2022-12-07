@@ -7,7 +7,11 @@ import btn from '../../assets/img/ButtonDelete.svg';
 import minus from '../../assets/img/Minus.svg';
 import plus from '../../assets/img/Plus.svg';
 
-export const CartItem: React.FC = () => {
+type Props = {
+  phoneId: string,
+};
+
+export const CartItem: React.FC<Props> = ({ phoneId }) => {
   const count = 1;
 
   return (
@@ -17,12 +21,12 @@ export const CartItem: React.FC = () => {
           <img src={btn} alt="button delete" />
         </button>
 
-        <Link to="/item">
+        <Link to={`/phones/${phoneId}`}>
           <img className={s.cartItem__image} src={img} alt="appleProduct" />
         </Link>
 
         <h3>
-          <Link to="/item" className={s.cartItem__title}>
+          <Link to={`/phones/${phoneId}`} className={s.cartItem__title}>
             Apple iPhone 14
             Pro 128GB Silver (MQ023)
           </Link>

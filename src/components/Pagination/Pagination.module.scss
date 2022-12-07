@@ -2,7 +2,7 @@
 @import '../../styles/mixins';
 
 .pagination {
-  margin: 24px auto 64px;
+  margin: 24px auto 0;
   width: 270px;
   overflow-x: scroll;
   padding: 15px 5px;
@@ -22,10 +22,6 @@
     overflow-x: auto;
     background-color: transparent;
     box-shadow: none;
-  }
-
-  @include onDesktop {
-    margin-bottom: 80px;
   }
 
   &__item {
