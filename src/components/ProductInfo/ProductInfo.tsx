@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { Loader } from '../Loader';
 import { ProductLayout } from './ProductLayout';
@@ -15,14 +15,17 @@ type Props = {
 };
 
 export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
-  // const location = useLocation();
-  // const similarId = location.pathname
-  //   .slice(location.pathname.lastIndexOf('/') + 1);
+  const location = useLocation();
+  const similarId = location.pathname
+    .slice(location.pathname.lastIndexOf('/') + 1);
+
+  window.console.log(location);
 
   const [phone, setPhone] = useState<PhoneInfo | null>(null);
   const [currentPhone, setCurrentPhone] = useState<PhoneFullInfo>();
   const [similarPhones, setSimilarPhones] = useState<Phone[]>();
   const [loading, setLoading] = useState(false);
+  const [url, setUrl] = useState(location.pathname);
 
   const getPhoneFromServer = useCallback(async (id: string) => {
     try {
@@ -47,6 +50,14 @@ export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
       setSimilarPhones(phone.similar);
     }
   }, [phone]);
+
+  if (url !== location.pathname) {
+    setUrl(location.pathname);
+  }
+
+  useEffect(() => {
+    getPhoneFromServer(similarId);
+  }, [url]);
 
   if (loading) {
     return <Loader />;
