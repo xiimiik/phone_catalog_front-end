@@ -1,9 +1,27 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-closing-tag-location */
 import cn from 'classnames';
 import s from './ProductControls.module.scss';
 
-export const ProductControls = () => {
-  const active = true;
+type Props = {
+  capacityAvailable: string[],
+  colorsAvailable: string[],
+  color: string,
+  capacity: string,
+};
+
+export const ProductControls: React.FC<Props> = ({
+  capacityAvailable,
+  capacity,
+  colorsAvailable,
+  color,
+}) => {
+  const transformedColors = colorsAvailable.map(color => {
+    switch (color) {
+      case 'green':
+        
+    }
+  })
 
   return (
     <div className={s.controls}>
@@ -14,45 +32,20 @@ export const ProductControls = () => {
         </h4>
 
         <ul className={s.controls__params}>
-          <li className={s.controls__params_item}>
-            <div
-              className={cn(s.controls__params_item_wrap, {
-                [s.controls__params_item_wrap_active]: active,
-              })}
-            >
+          {colorsAvailable.map((currentColor: string, i) => (
+            <li key={i} className={s.controls__params_item}>
               <div
-                className={s.controls__params_item_inner}
-                style={{ backgroundColor: '#FCDBC1' }}
-              > </div>
-            </div>
-          </li>
-
-          <li className={s.controls__params_item}>
-            <div className={s.controls__params_item_wrap}>
-              <div
-                className={s.controls__params_item_inner}
-                style={{ backgroundColor: '#5F7170' }}
-              > </div>
-            </div>
-          </li>
-
-          <li className={s.controls__params_item}>
-            <div className={s.controls__params_item_wrap}>
-              <div
-                className={s.controls__params_item_inner}
-                style={{ backgroundColor: '#4C4C4C' }}
-              > </div>
-            </div>
-          </li>
-
-          <li className={s.controls__params_item}>
-            <div className={s.controls__params_item_wrap}>
-              <div
-                className={s.controls__params_item_inner}
-                style={{ backgroundColor: '#F0F0F0' }}
-              > </div>
-            </div>
-          </li>
+                className={cn(s.controls__params_item_wrap, {
+                  [s.controls__params_item_wrap_active]: currentColor === color,
+                })}
+              >
+                <div
+                  className={s.controls__params_item_inner}
+                  style={{ backgroundColor: `${currentColor}` }}
+                > </div>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -62,27 +55,18 @@ export const ProductControls = () => {
         </h4>
 
         <ul className={s.controls__params}>
-          <li className={s.controls__params_item}>
-            <div
-              className={cn(s.controls__params_capacity, {
-                [s.controls__params_capacity_active]: active,
-              })}
-            >
-              64 GB
-            </div>
-          </li>
-
-          <li className={s.controls__params_item}>
-            <div className={s.controls__params_capacity}>
-              256 GB
-            </div>
-          </li>
-
-          <li className={s.controls__params_item}>
-            <div className={s.controls__params_capacity}>
-              512 GB
-            </div>
-          </li>
+          {capacityAvailable.map((currentCatacity, i) => (
+            <li key={i} className={s.controls__params_item}>
+              <div
+                className={cn(s.controls__params_capacity, {
+                  [s.controls__params_capacity_active]:
+                  currentCatacity === capacity,
+                })}
+              >
+                {currentCatacity}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

@@ -28,6 +28,7 @@ export const ProductsSlider = <T extends Phone>(
       >
         {products.map(({
           id,
+          phoneId,
           name,
           fullPrice,
           price,
@@ -41,6 +42,7 @@ export const ProductsSlider = <T extends Phone>(
             className={s.slider__item}
           >
             <ProductCard
+              phoneId={phoneId}
               name={name}
               fullPrice={fullPrice}
               price={price}

@@ -1,78 +1,39 @@
+/* eslint-disable react/no-array-index-key */
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Thumbs, EffectFade } from 'swiper';
+import SwiperCore, { Thumbs } from 'swiper';
 
 import 'swiper/scss';
 import 'swiper/scss/thumbs';
 import s from './ProductGallery.module.scss';
 
-import img from '../../assets/img/iphone11.png';
+type Props = {
+  images: string[] | undefined,
+};
 
-export const ProductGallery = () => {
+export const ProductGallery: React.FC<Props> = ({ images }) => {
   const [activeThumb, setActiveThumb] = useState<SwiperCore>();
 
   return (
     <div className={s.gallery}>
       <Swiper
         className={s.product__image_slider}
-        modules={[Thumbs, EffectFade]}
-        effect="fade"
+        modules={[Thumbs]}
         spaceBetween={50}
         slidesPerView={1}
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
       >
-        <SwiperSlide>
-          <img
-            src={img}
-            alt="lol"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src={img}
-            alt="lol"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src={img}
-            alt="lol"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src={img}
-            alt="lol"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src={img}
-            alt="lol"
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </SwiperSlide>
+        {images?.map((image, i) => (
+          <SwiperSlide key={i}>
+            <img
+              src={`https://effulgent-elf-0da1cb.netlify.app/${image}`}
+              alt={image}
+              className={s.product__image_img}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <Swiper
@@ -83,71 +44,23 @@ export const ProductGallery = () => {
         spaceBetween={10}
         slidesPerView={5}
       >
-        <SwiperSlide
-          className={s.product__slider_thumb}
-        >
-          <img
-            style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'contain',
-            }}
-            src={img}
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide
-          className={s.product__slider_thumb}
-        >
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-            }}
-            src={img}
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide
-          className={s.product__slider_thumb}
-        >
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-            }}
-            src={img}
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide
-          className={s.product__slider_thumb}
-        >
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-            }}
-            src={img}
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide
-          className={s.product__slider_thumb}
-        >
-          <img
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'contain',
-            }}
-            src={img}
-            alt=""
-          />
-        </SwiperSlide>
+        {images?.map((image, i) => (
+          <SwiperSlide
+            key={i}
+            className={s.product__slider_thumb}
+          >
+            <img
+              src={`https://effulgent-elf-0da1cb.netlify.app/${image}`}
+              alt={image}
+              style={{
+                height: '100%',
+                width: '100%',
+                objectFit: 'contain',
+              }}
+            />
+          </SwiperSlide>
+        ))}
+
       </Swiper>
     </div>
   );

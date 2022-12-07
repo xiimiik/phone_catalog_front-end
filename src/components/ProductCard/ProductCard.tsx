@@ -6,6 +6,7 @@ import s from './ProductCard.module.scss';
 import { ProductAction } from '../ProductAction';
 
 type Props = {
+  phoneId: string,
   name: string,
   fullPrice: number,
   price: number,
@@ -16,6 +17,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({
+  phoneId,
   name,
   fullPrice,
   price,
@@ -26,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   return (
     <article className={s.productCard}>
-      <Link to="/item" className={s.productCard__img}>
+      <Link to={`/phones/${phoneId}`} className={s.productCard__img}>
         <img src={` https://effulgent-elf-0da1cb.netlify.app/${image}`} alt="appleProduct" />
       </Link>
 
@@ -34,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({
         className={s.productCard__title}
         title={name.toString()}
       >
-        <Link to="/item" className={s.productCard__link}>
+        <Link to={`/phones/${phoneId}`} className={s.productCard__link}>
           {`${name} (iMT9G2FS/A)`}
         </Link>
       </h3>

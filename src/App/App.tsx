@@ -23,13 +23,16 @@ export function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<Navigate to="/" replace />} />
 
-            <Route path="/phones" element={<CatalogPage />} />
+            <Route path="phones">
+              <Route index element={<CatalogPage />} />
+              <Route path=":phoneId" element={<ItemCardPage />} />
+            </Route>
+
             <Route path="/tablets" element={<NotYet />} />
             <Route path="/accessories" element={<NotYet />} />
 
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/item" element={<ItemCardPage />} />
 
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

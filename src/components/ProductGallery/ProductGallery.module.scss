@@ -25,6 +25,19 @@
   @include onTablet {
     order: 2;
   }
+
+  :global(.swiper-slide) {
+    .product__image_img {
+      width: 100%;
+      height: 287px;
+      object-fit: contain;
+      object-position: center;
+
+      @include onLaptop {
+        height: 464px;
+      }
+    }
+  }
 }
 
 .product__image_slider_thumbs {
