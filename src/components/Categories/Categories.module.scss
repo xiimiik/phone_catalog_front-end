@@ -2,7 +2,80 @@
 @import '../../styles/vars';
 
 .categories {
-  background-color: aqua;
-  width: 100%;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.category {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
+
+  &__image_container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+    margin-bottom: 24px;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    @each $number, $color, $padding_top, $padding_left in $img-container-info {
+      &__img#{$number} {
+        background-color: $color;
+        padding-top: $padding_top;
+        padding-left: $padding_left;
+      }
+    }
+
+    @include onTablet {
+      width: 100%;
+      height: 100%;
+      min-width: 187px;
+      min-height: 187px;
+    }
+
+    @include onDesktop {
+      max-width: 368px;
+      max-height: 368px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    border-bottom-right-radius: $radius;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primary-color;
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
 }
