@@ -4,6 +4,16 @@
 .promo {
   width: 100%;
 
+  @include onTablet {
+    margin: 0 auto;
+    padding: 0 $tab-side-padding;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+    padding: 0 $desk-side-padding;
+  }
+
   :global(.swiper-pagination) {
     position: fixed;
     bottom: -30px;
@@ -40,7 +50,7 @@
 
     position: fixed;
 
-    width: 32px;
+    width: $slider-button-width;
     border: 1px solid $secondary-color;
     border-radius: 48px;
 
@@ -67,16 +77,6 @@
 
   :global(.swiper-button-next::after) {
     right: 0;
-  }
-
-  @include onTablet {
-    margin: 0 auto;
-    padding: 0 $tab-side-padding;
-  }
-
-  @include onDesktop {
-    max-width: 1200px;
-    padding: 0 $desk-side-padding;
   }
 
   &__wrapper {
