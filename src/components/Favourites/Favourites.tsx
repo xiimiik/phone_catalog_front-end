@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import {
   useCallback,
   useContext,
@@ -9,6 +10,7 @@ import { Phone } from '../../types/Phone';
 import { UserContext } from '../../context/Context';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
+import { EmptyChosen } from '../EmptyChosen';
 
 import s from './Favourites.module.scss';
 
@@ -48,6 +50,11 @@ export const Favourites = () => {
 
       {isLoading ? (
         <Loader />
+      ) : (!favouritesIds.length ? (
+        <EmptyChosen
+          group="favorites"
+          actionText="mark"
+        />
       ) : (
         <div className={s.favourites__list}>
           {favorites?.map(phone => {
@@ -59,7 +66,7 @@ export const Favourites = () => {
             );
           })}
         </div>
-      )}
+      ))}
     </div>
   );
 };
