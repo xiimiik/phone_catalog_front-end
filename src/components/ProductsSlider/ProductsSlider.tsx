@@ -26,28 +26,13 @@ export const ProductsSlider = <T extends Phone>(
         spaceBetween={16}
         className={s.slider__swiper}
       >
-        {products.map(({
-          id,
-          name,
-          fullPrice,
-          price,
-          screen,
-          capacity,
-          ram,
-          image,
-        }) => (
+        {products.map(phone => (
           <SwiperSlide
-            key={id}
+            key={phone.id}
             className={s.slider__item}
           >
             <ProductCard
-              name={name}
-              fullPrice={fullPrice}
-              price={price}
-              screen={screen}
-              capacity={capacity}
-              ram={ram}
-              image={image}
+              phone={phone}
             />
           </SwiperSlide>
         ))}

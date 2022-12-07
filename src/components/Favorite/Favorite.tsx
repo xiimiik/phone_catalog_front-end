@@ -1,13 +1,43 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../context/Context';
 import s from './Favorite.module.scss';
 
-export const Favorite = () => {
+type Props = {
+  id?: string
+};
+
+export const Favorite: React.FC<Props> = ({ id }) => {
   const [select, setSelect] = useState(false);
+  const { favouritesIds, setFavouritesIds } = useContext(UserContext);
+
+  const isFavourite = favouritesIds.find(phoneId => phoneId === id);
+
+  const handleFavourite = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    if (isFavourite) {
+      const filteredFavourites = favouritesIds.filter(phoneId => (
+        phoneId !== id
+      ));
+
+      setFavouritesIds(filteredFavourites);
+    } else {
+      setFavouritesIds([...favouritesIds, id] as string[]);
+    }
+
+    setSelect(selected => !selected);
+  };
+
+  useEffect(() => {
+    if (isFavourite) {
+      setSelect(true);
+    }
+  }, []);
 
   return (
     <button
-      onClick={() => setSelect(selected => !selected)}
+      onClick={handleFavourite}
       className={s.icon}
     >
       {select

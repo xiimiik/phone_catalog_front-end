@@ -99,26 +99,11 @@ export const Catalog = () => {
         <Loader />
       ) : (
         <div className={s.catalog__list}>
-          {phones?.map(({
-            id,
-            name,
-            fullPrice,
-            price,
-            screen,
-            capacity,
-            ram,
-            image,
-          }) => {
+          {phones?.map(phone => {
             return (
               <ProductCard
-                key={id}
-                name={name}
-                fullPrice={fullPrice}
-                price={price}
-                screen={screen}
-                capacity={capacity}
-                ram={ram}
-                image={image}
+                key={phone.id}
+                phone={phone}
               />
             );
           })}

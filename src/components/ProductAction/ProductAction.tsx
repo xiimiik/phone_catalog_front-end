@@ -3,7 +3,11 @@ import { Favorite } from '../Favorite/Favorite';
 
 import s from './ProductAction.module.scss';
 
-export const ProductAction = () => {
+type Props = {
+  id?: string
+};
+
+export const ProductAction: React.FC<Props> = ({ id }) => {
   return (
     <div className={s.action}>
       <div className={s.action__btn}>
@@ -11,7 +15,7 @@ export const ProductAction = () => {
       </div>
 
       <div className={s.action__favorite}>
-        <Favorite />
+        <Favorite id={id} />
       </div>
     </div>
   );
