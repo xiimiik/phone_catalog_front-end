@@ -4,28 +4,24 @@ import { Link } from 'react-router-dom';
 import s from './ProductCard.module.scss';
 
 import { ProductAction } from '../ProductAction';
+import { Phone } from '../../types/Phone';
 
 type Props = {
-  phoneId: string,
-  name: string,
-  fullPrice: number,
-  price: number,
-  screen: string,
-  capacity: string,
-  ram: string,
-  image: string,
+  phone: Phone
 };
 
-export const ProductCard: React.FC<Props> = ({
-  phoneId,
-  name,
-  fullPrice,
-  price,
-  screen,
-  capacity,
-  ram,
-  image,
-}) => {
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const {
+    id,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = phone;
+
   return (
     <article className={s.productCard}>
       <Link to={`/phones/${phoneId}`} className={s.productCard__img}>
@@ -66,7 +62,7 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
 
       <footer className={s.productCard__action}>
-        <ProductAction />
+        <ProductAction id={id} />
       </footer>
     </article>
   );

@@ -28,6 +28,12 @@ export const getPhonesWithLimit = async (
   return phones || null;
 };
 
+export const getPhonesByIds = async (phoneId: string[]) => {
+  const phone = client.get<Phone[]>(`/users/favorites?ids=${phoneId.join(',')}`);
+
+  return phone || null;
+};
+
 export const getPhone = async (phoneId: string) => {
   const phone = client.get<PhoneInfo>(`/products/phones/${phoneId}`);
 
