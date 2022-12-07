@@ -1,0 +1,60 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.category {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
+
+  &__image_container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius;
+    margin-bottom: 24px;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    @include onTablet {
+      width: 100%;
+      height: 100%;
+      min-width: 187px;
+      min-height: 187px;
+    }
+
+    @include onDesktop {
+      max-width: 368px;
+      max-height: 368px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primary-color;
+    margin-bottom: 4px;
+  }
+
+  &__quantity {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+  }
+}
