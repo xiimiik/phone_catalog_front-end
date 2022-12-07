@@ -32,8 +32,6 @@ export const Favorite: React.FC<Props> = ({ id }) => {
   useEffect(() => {
     if (isFavourite) {
       setSelect(true);
-    } else {
-      setSelect(false);
     }
   }, []);
 

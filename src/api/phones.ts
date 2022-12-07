@@ -22,8 +22,6 @@ export const getPhonesWithLimit = async (
 };
 
 export const getPhonesByIds = async (phoneId: string[]) => {
-  // eslint-disable-next-line no-console
-  console.log(phoneId.join(','));
   const phone = client.get<Phone[]>(`/users/favorites?ids=${phoneId.join(',')}`);
 
   return phone || null;
