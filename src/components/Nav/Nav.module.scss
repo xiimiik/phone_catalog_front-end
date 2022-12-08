@@ -121,6 +121,7 @@
     box-shadow: 0px -1px 0px $elements-color;
 
     &_item {
+      position: relative;
       height: 64px;
       width: 50%;
       display: flex;
@@ -128,6 +129,25 @@
       align-items: center;
 
       box-shadow: -1px 0px 0px $elements-color;
+
+      &_img {
+        position: relative;
+      }
+
+      &_idic {
+        display: block;
+        position: absolute;
+        color: $white-color;
+        transform: translate(50%, -40%);
+        width: 14px;
+        height: 14px;
+        background-color: $secondary-accent-color;
+        border: 1px solid $white-color;
+        border-radius: 50%;
+        font-size: 9px;
+        line-height: 12px;
+        text-align: center;
+      }
     }
 
     @include onTablet {

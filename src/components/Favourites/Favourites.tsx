@@ -34,7 +34,11 @@ export const Favourites = () => {
 
   useEffect(() => {
     getPhonesFromServer();
-  }, []);
+  }, [favouritesIds]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className={s.favourites}>
@@ -46,11 +50,9 @@ export const Favourites = () => {
         models
       </div>
 
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {favouritesIds.length > 0 ? (
         <div className={s.favourites__list}>
-          {favorites?.map(phone => {
+          {favorites.map(phone => {
             return (
               <ProductCard
                 key={phone.id}
@@ -59,6 +61,8 @@ export const Favourites = () => {
             );
           })}
         </div>
+      ) : (
+        'empty'
       )}
     </div>
   );

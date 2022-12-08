@@ -4,7 +4,7 @@ import { Favorite } from '../Favorite/Favorite';
 import s from './ProductAction.module.scss';
 
 type Props = {
-  id?: string
+  id: string
 };
 
 export const ProductAction: React.FC<Props> = ({ id }) => {
