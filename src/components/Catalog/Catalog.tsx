@@ -14,6 +14,7 @@ import { Pagination } from '../Pagination';
 import s from './Catalog.module.scss';
 
 import { optionsSorting, optionsCount } from '../../utils/optionsParams';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
@@ -77,6 +78,12 @@ export const Catalog = () => {
 
   return (
     <div className={s.catalog}>
+      <Breadcrumbs
+        breads={[
+          { title: 'home', path: '/' },
+          { title: 'Phones', path: '/phones' },
+        ]}
+      />
       <h1 className={s.catalog__title}>Mobile phones</h1>
 
       <div className={s.catalog__count}>
