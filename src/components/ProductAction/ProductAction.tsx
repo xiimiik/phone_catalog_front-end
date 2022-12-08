@@ -11,7 +11,7 @@ export const ProductAction: React.FC<Props> = ({ id }) => {
   return (
     <div className={s.action}>
       <div className={s.action__btn}>
-        <Button />
+        <Button id={id} />
       </div>
 
       <div className={s.action__favorite}>
