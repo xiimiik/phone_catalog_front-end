@@ -47,7 +47,7 @@ export const Favourites = () => {
         {' '}
         models
       </div>
- 
+
       {isLoading ? (
         <Loader />
       ) : (!favouritesIds.length ? (
