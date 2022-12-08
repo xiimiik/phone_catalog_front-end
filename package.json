@@ -28,7 +28,7 @@
     "format:check": "prettier --check .",
     "eslint": "eslint --ext .tsx,.ts --fix ./src -c .eslintrc.cjs",
     "prod": "npm run build",
-    "deploy": "git push origin `git subtree split --prefix dist main`:gh-pages --force"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
