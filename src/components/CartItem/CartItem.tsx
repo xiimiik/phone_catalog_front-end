@@ -30,7 +30,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
   const handleRemoveButtonClick = (event: React.MouseEvent) => {
     event.preventDefault();
 
-    if (index) {
+    if (index > -1) {
       const filteredCartItemsIds = cartItemsIds.filter((_itemId, i) => (
         i !== index
       ));
