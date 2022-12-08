@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import s from './CartItem.module.scss';
 
 import btn from '../../assets/img/ButtonDelete.svg';
@@ -10,11 +11,13 @@ import { UserContext } from '../../context/Context';
 
 type Props = {
   phone: Phone,
+  isDeleting: boolean;
 };
 
-export const CartItem: React.FC<Props> = ({ phone }) => {
+export const CartItem: React.FC<Props> = ({ phone, isDeleting }) => {
   const {
     id,
+    phoneId,
     image,
     name,
     price,
@@ -26,9 +29,10 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
     setCartItemsNumber,
   } = useContext(UserContext);
   const index = cartItemsIds.findIndex(itemId => itemId === id);
+  const [idToDelete, setIdToDelete] = useState('0');
 
-  const handleRemoveButtonClick = (event: React.MouseEvent) => {
-    event.preventDefault();
+  const handleRemoveButtonClick = () => {
+    setIdToDelete(id);
 
     if (index > -1) {
       const filteredCartItemsIds = cartItemsIds.filter((_itemId, i) => (
@@ -71,48 +75,57 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
 
   return (
     <article className={s.cartItem}>
-      <div className={s.cartItem__info}>
-        <button
-          onClick={handleRemoveButtonClick}
-          className={s.cartItem__deleteButton}
-        >
-          <img src={btn} alt="button delete" />
-        </button>
+      {isDeleting && idToDelete === id && (
+        <div className={s.cartItem__loader} />
+      )}
 
-        <Link to={`/phones/${id}`}>
-          <img
-            className={s.cartItem__image}
-            src={` https://effulgent-elf-0da1cb.netlify.app/${image}`}
-            alt={name}
-          />
-        </Link>
+      <div className={cn(s.cartItem__content, {
+        [s.cartItem__content__opacity_50]: isDeleting && idToDelete === id,
+      })}
+      >
+        <div className={s.cartItem__info}>
+          <button
+            onClick={handleRemoveButtonClick}
+            className={s.cartItem__deleteButton}
+          >
+            <img src={btn} alt="button delete" />
+          </button>
 
-        <h3>
-          <Link to={`/phones/${id}`} className={s.cartItem__title}>
-            {name}
+          <Link to={`/phones/${phoneId}`}>
+            <img
+              className={s.cartItem__image}
+              src={` https://effulgent-elf-0da1cb.netlify.app/${image}`}
+              alt={name}
+            />
           </Link>
-        </h3>
-      </div>
 
-      <div className={s.cartItem__wrapper}>
-        <div className={s.cartItem__counter}>
-          <button
-            onClick={removeOne}
-            className={s.cartItem__button}
-          >
-            <img src={minus} alt="Minus button" />
-          </button>
-          <p>{cartItemsNumber[index]}</p>
-          <button
-            onClick={addOne}
-            className={s.cartItem__button}
-          >
-            <img src={plus} alt="Plus button" />
-          </button>
+          <h3>
+            <Link to={`/phones/${phoneId}`} className={s.cartItem__title}>
+              {name}
+            </Link>
+          </h3>
         </div>
 
-        <div className={s.cartItem__price}>
-          {`$${price}`}
+        <div className={s.cartItem__wrapper}>
+          <div className={s.cartItem__counter}>
+            <button
+              onClick={removeOne}
+              className={s.cartItem__button}
+            >
+              <img src={minus} alt="Minus button" />
+            </button>
+            <p>{cartItemsNumber[index]}</p>
+            <button
+              onClick={addOne}
+              className={s.cartItem__button}
+            >
+              <img src={plus} alt="Plus button" />
+            </button>
+          </div>
+
+          <div className={s.cartItem__price}>
+            {`$${price}`}
+          </div>
         </div>
       </div>
     </article>
