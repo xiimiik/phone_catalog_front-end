@@ -67,7 +67,7 @@ export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
     currentPhone && similarPhones
       ? (
         <>
-          <ProductLayout phone={currentPhone} />
+          <ProductLayout phone={currentPhone} id={similarPhones[0].id} />
           <ProductsSlider
             products={similarPhones}
             title="You may also like"
