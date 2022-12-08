@@ -18,7 +18,7 @@ const navLinks = [
 
 export const Nav: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState(false);
-  const { favouritesIds, cartIds } = useContext(UserContext);
+  const { favouritesIds, cartItemsIds } = useContext(UserContext);
 
   const onOpenMenu = () => {
     setActiveMenu(active => !active);
@@ -100,9 +100,9 @@ export const Nav: React.FC = () => {
           >
             <img src={shoppingBagImg} alt="cart" />
 
-            {cartIds.length > 0 && (
+            {cartItemsIds.length > 0 && (
               <span className={s.nav__cart_item_idic}>
-                {cartIds.length}
+                {cartItemsIds.length}
               </span>
             )}
           </NavLink>
