@@ -36,7 +36,7 @@ export const Favourites = () => {
 
   useEffect(() => {
     getPhonesFromServer();
-  }, []);
+  }, [favouritesIds]);
 
   return (
     <div className={s.favourites}>
@@ -47,7 +47,7 @@ export const Favourites = () => {
         {' '}
         models
       </div>
-
+ 
       {isLoading ? (
         <Loader />
       ) : (!favouritesIds.length ? (

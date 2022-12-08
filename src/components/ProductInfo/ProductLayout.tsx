@@ -9,10 +9,10 @@ import s from './ProductLayout.module.scss';
 
 type Props = {
   phone: PhoneFullInfo;
-  id: string,
+  phoneId: string;
 };
 
-export const ProductLayout: React.FC<Props> = ({ phone, id }) => {
+export const ProductLayout: React.FC<Props> = ({ phone, phoneId }) => {
   const {
     name,
     capacityAvailable,
@@ -67,7 +67,7 @@ export const ProductLayout: React.FC<Props> = ({ phone, id }) => {
           </div>
 
           <div className={s.product__action}>
-            <ProductAction id={id} />
+            <ProductAction id={phoneId} />
           </div>
 
           <ul className={s.product__params}>

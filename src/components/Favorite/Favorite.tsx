@@ -4,7 +4,7 @@ import { UserContext } from '../../context/Context';
 import s from './Favorite.module.scss';
 
 type Props = {
-  id?: string
+  id: string
 };
 
 export const Favorite: React.FC<Props> = ({ id }) => {
@@ -23,7 +23,7 @@ export const Favorite: React.FC<Props> = ({ id }) => {
 
       setFavouritesIds(filteredFavourites);
     } else {
-      setFavouritesIds([...favouritesIds, id] as string[]);
+      setFavouritesIds([...favouritesIds, id]);
     }
 
     setSelect(selected => !selected);

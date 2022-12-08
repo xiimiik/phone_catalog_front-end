@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import cn from 'classnames';
 import s from './Nav.module.scss';
 
 import logoImg from '../../assets/img/Logo.svg';
 import favouritesImg from '../../assets/img/Favourites.svg';
 import shoppingBagImg from '../../assets/img/ShoppingBag.svg';
+import { UserContext } from '../../context/Context';
 
 const navLinks = [
   { to: '/', text: 'home' },
@@ -15,13 +16,9 @@ const navLinks = [
   { to: '/accessories', text: 'accessories' },
 ];
 
-const boxLinks = [
-  { to: '/favorites', imgSrc: favouritesImg, alt: 'favorites' },
-  { to: '/cart', imgSrc: shoppingBagImg, alt: 'cart' },
-];
-
 export const Nav: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState(false);
+  const { favouritesIds, cartIds } = useContext(UserContext);
 
   const onOpenMenu = () => {
     setActiveMenu(active => !active);
@@ -82,16 +79,33 @@ export const Nav: React.FC = () => {
         </ul>
 
         <div className={s.nav__cart}>
-          {boxLinks.map(({ to, imgSrc, alt }) => (
-            <NavLink
-              key={alt}
-              to={to}
-              className={s.nav__cart_item}
-              onClick={onCloseMenu}
-            >
-              <img src={imgSrc} alt={alt} />
-            </NavLink>
-          ))}
+          <NavLink
+            to="/favorites"
+            className={s.nav__cart_item}
+            onClick={onCloseMenu}
+          >
+            <img src={favouritesImg} alt="favorites" className={s.cart__cart_item_img} />
+
+            {favouritesIds.length > 0 && (
+              <span className={s.nav__cart_item_idic}>
+                {favouritesIds.length}
+              </span>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={s.nav__cart_item}
+            onClick={onCloseMenu}
+          >
+            <img src={shoppingBagImg} alt="cart" />
+
+            {cartIds.length > 0 && (
+              <span className={s.nav__cart_item_idic}>
+                {cartIds.length}
+              </span>
+            )}
+          </NavLink>
         </div>
       </div>
     </nav>
