@@ -16,6 +16,7 @@ import { Pagination } from '../Pagination';
 import s from './Catalog.module.scss';
 
 import { optionsSorting, optionsCount } from '../../utils/optionsParams';
+import { Order } from '../../types/Order';
 
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
@@ -26,13 +27,43 @@ export const Catalog = () => {
 
   const sorting = searchParams.get('sorting') || 'default';
   const quantity = searchParams.get('quantity') || '16';
+  const page = searchParams.get('page') || '1';
 
-  const [selectLimit, setSelectLimit] = useState(sorting);
-  const [selectSort, setSelectSort] = useState(quantity);
-  const [selectOffset, setSelectOffset] = useState(1);
+  const [selectSort, setSelectSort] = useState(sorting);
+  const [selectLimit, setSelectLimit] = useState(quantity);
+  const [selectOffset, setSelectOffset] = useState(page);
 
   const [orderSort, setOrderSort] = useState('');
   const [dirSort, setDirSort] = useState('');
+
+  const setSelect = (sort: string) => {
+    switch (sort) {
+      case Order.ascPrice:
+        setOrderSort('price');
+        setDirSort('asc');
+        break;
+
+      case Order.descPrice:
+        setOrderSort('price');
+        setDirSort('desc');
+        break;
+
+      case Order.ascYear:
+        setOrderSort('year');
+        setDirSort('asc');
+        break;
+
+      case Order.descYear:
+        setOrderSort('year');
+        setDirSort('desc');
+        break;
+
+      case Order.default:
+      default:
+        setOrderSort('');
+        setDirSort('');
+    }
+  };
 
   const getPhonesFromServer = useCallback(
     async (
@@ -44,6 +75,7 @@ export const Catalog = () => {
       try {
         setIsLoading(true);
         const length = await getPhones();
+
         const phonesFromServer
           = await getPhonesWithLimit(offset, limit, order, dir);
 
@@ -59,44 +91,19 @@ export const Catalog = () => {
     }, [phones],
   );
 
-  const setSorting = (order: string, dir: string) => {
-    setOrderSort(order);
-    setDirSort(dir);
-  };
-
-  const setSelect = (sort: string) => {
-    switch (sort) {
-      case 'ascPrice':
-        setSorting('price', 'asc');
-        break;
-
-      case 'descPrice':
-        setSorting('price', 'desc');
-        break;
-
-      case 'ascYear':
-        setSorting('new', 'asc');
-        break;
-
-      case 'descYear':
-        setSorting('new', 'desc');
-        break;
-
-      case 'default':
-      default:
-        setSorting('', '');
-    }
-  };
-
   useEffect(() => {
-    setSelect(selectSort);
+    setSelect(sorting);
   }, [selectSort]);
 
   useEffect(() => {
-    setSelect(selectSort);
+    setSelect(sorting);
+    searchParams.set('sorting', optionsSorting[0].value);
+    searchParams.set('quantity', optionsCount[2].value);
+    searchParams.set('page', '1');
+    setSearchParams(searchParams);
 
     getPhonesFromServer(
-      selectOffset,
+      Number(selectOffset),
       selectLimit,
       orderSort,
       dirSort,
@@ -105,12 +112,19 @@ export const Catalog = () => {
 
   useEffect(() => {
     getPhonesFromServer(
-      selectOffset,
+      Number(selectOffset),
       selectLimit,
       orderSort,
       dirSort,
     );
   }, [selectLimit, selectOffset, orderSort, dirSort]);
+
+  useEffect(() => {
+    searchParams.set('sorting', selectSort);
+    searchParams.set('quantity', selectLimit);
+    searchParams.set('page', String(selectOffset));
+    setSearchParams(searchParams);
+  }, [searchParams]);
 
   return (
     <div className={s.catalog}>
@@ -150,9 +164,11 @@ export const Catalog = () => {
 
       <Pagination
         setSelectOffset={setSelectOffset}
-        selectOffset={selectOffset}
+        selectOffset={Number(selectOffset)}
         phonesLength={phonesLength}
         selectLimit={Number(selectLimit)}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
     </div>
   );

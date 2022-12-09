@@ -6,7 +6,9 @@ type Props = {
   selectOffset: number,
   phonesLength: number,
   selectLimit: number,
-  setSelectOffset: (offset: number) => void,
+  setSelectOffset: (offset: string) => void,
+  searchParams: URLSearchParams,
+  setSearchParams: (page: URLSearchParams) => void,
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -14,6 +16,8 @@ export const Pagination: React.FC<Props> = ({
   phonesLength,
   selectLimit,
   setSelectOffset,
+  searchParams,
+  setSearchParams,
 }) => {
   const [currentPage, setCurrentPage] = useState(selectOffset);
 
@@ -34,14 +38,28 @@ export const Pagination: React.FC<Props> = ({
     window.scrollTo({ top: 0, left: 0 });
   }, [currentPage]);
 
+  useEffect(() => {
+    searchParams.set('page', String(currentPage));
+    setSearchParams(searchParams);
+  }, [searchParams]);
+
   if (currentPage > getPages(phonesLength).length
     && getPages(phonesLength).length !== 0) {
     setCurrentPage(lastPage);
-    setSelectOffset(lastPage);
+    setSelectOffset(String(lastPage));
+    searchParams.set('page', String(lastPage));
+    setSearchParams(searchParams);
   }
 
   const checkPage = (page: number) => {
     return currentPage === page;
+  };
+
+  const setPage = (page: number) => {
+    setSelectOffset(String(page));
+    setCurrentPage(page);
+    searchParams.set('page', String(page));
+    setSearchParams(searchParams);
   };
 
   return (
@@ -51,8 +69,7 @@ export const Pagination: React.FC<Props> = ({
           <button
             onClick={() => {
               if (!checkPage(1)) {
-                setSelectOffset(currentPage - 1);
-                setCurrentPage(currentPage - 1);
+                setPage(currentPage - 1);
               }
             }}
             disabled={checkPage(1)}
@@ -65,10 +82,8 @@ export const Pagination: React.FC<Props> = ({
         {getPages(phonesLength).map(page => (
           <li key={page} className={s.pagination__item}>
             <button
-              onClick={() => {
-                setSelectOffset(page);
-                setCurrentPage(page);
-              }}
+              onClick={() => setPage(page)}
+              disabled={checkPage(page)}
               className={cn(s.pagination__link, {
                 [s.pagination__link_active]: selectOffset === page,
               })}
@@ -82,8 +97,7 @@ export const Pagination: React.FC<Props> = ({
           <button
             onClick={() => {
               if (!checkPage(lastPage)) {
-                setSelectOffset(currentPage + 1);
-                setCurrentPage(currentPage + 1);
+                setPage(currentPage + 1);
               }
             }}
             disabled={checkPage(lastPage)}
