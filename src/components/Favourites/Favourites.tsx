@@ -11,6 +11,7 @@ import { UserContext } from '../../context/Context';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { EmptyChosen } from '../EmptyChosen';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 import s from './Favourites.module.scss';
 
@@ -40,6 +41,12 @@ export const Favourites = () => {
 
   return (
     <div className={s.favourites}>
+      <Breadcrumbs
+        breads={[
+          { title: 'home', path: '/' },
+          { title: 'Favourites', path: '/favourites' },
+        ]}
+      />
       <h1 className={s.favourites__title}>Favourites</h1>
 
       <div className={s.favourites__count}>
