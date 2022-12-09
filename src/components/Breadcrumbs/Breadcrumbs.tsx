@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,7 @@ export const Breadcrumbs: React.FC<Props> = ({ breads }) => (
           >
             {title !== 'home'
               ? title
-              : <img src={homeImg} alt="" className={s.breadcrumbs__home} />}
+              : <img src={homeImg} alt="Home" className={s.breadcrumbs__home} />}
           </Link>
         </li>
       );

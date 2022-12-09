@@ -5,7 +5,7 @@ import {
 } from 'react';
 
 import { Phone } from '../../types/Phone';
-import { getPhones, getPhonesWithLimit } from '../../api/phones';
+import { getPhonesWithLimit } from '../../api/phones';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { SelectParams } from '../SelectParams';
@@ -37,14 +37,11 @@ export const Catalog = () => {
     ) => {
       try {
         setIsLoading(true);
-        const length = await getPhones();
         const phonesFromServer
           = await getPhonesWithLimit(offset, limit, order, dir);
 
-        setIsLoading(true);
-
         setPhones(phonesFromServer.edges);
-        setPhonesLength(length.count);
+        setPhonesLength(phonesFromServer.count);
       } catch (error: any) {
         throw new Error(error.message);
       } finally {
@@ -57,15 +54,6 @@ export const Catalog = () => {
     setOrderSort(order);
     setDirSort(dir);
   };
-
-  useEffect(() => {
-    getPhonesFromServer(
-      selectOffset,
-      selectLimit,
-      orderSort,
-      dirSort,
-    );
-  }, []);
 
   useEffect(() => {
     getPhonesFromServer(
