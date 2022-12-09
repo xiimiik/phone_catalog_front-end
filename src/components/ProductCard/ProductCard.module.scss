@@ -9,10 +9,12 @@
   border: 1px solid $elements-color;
   padding: 32px;
   background-color: $white-color;
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+    border-color: $accent-color;
   }
 
   &__img {
