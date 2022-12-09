@@ -3,6 +3,22 @@
 @import '../../styles/mixins';
 
 .product {
+  &__back_btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    
+    gap: 10px;
+    margin-bottom: 16px;
+    margin-top: 20px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 9px;
+    color: $secondary-color;
+  }
+
   &__title {
     @extend %product-title;
     margin-bottom: 32px;

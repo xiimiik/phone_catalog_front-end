@@ -3,7 +3,6 @@
 @import '../../styles/vars';
 
 .cart {
-
   &__button {
     display: flex;
     flex-direction: row;
@@ -12,13 +11,13 @@
     
     gap: 10px;
     margin-bottom: 16px;
+    margin-top: 20px;
 
     font-weight: 700;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 9px;
     color: $secondary-color;
   }
-
 
   &__title {
     margin-bottom: 32px;
