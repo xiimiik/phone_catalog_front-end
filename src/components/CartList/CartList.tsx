@@ -5,16 +5,22 @@ import s from './CartList.module.scss';
 
 type Props = {
   cartItems: Phone[],
-  isLoading: boolean,
+  isDeleting: boolean,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const CartList: React.FC<Props> = ({ cartItems, isLoading }) => {
+export const CartList: React.FC<Props> = ({
+  cartItems,
+  isDeleting,
+}) => {
   return (
     <>
       <div className={s.cartList}>
         {cartItems.map((phone => (
-          <CartItem key={phone.id} phone={phone} />
+          <CartItem
+            key={phone.id}
+            phone={phone}
+            isDeleting={isDeleting}
+          />
         )))}
       </div>
     </>
