@@ -1,0 +1,35 @@
+@import '../../styles/vars';
+@import "../../styles/mixins";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  border: 1px solid $elements-color;
+  border-radius: 8px;
+  background-color: $secondary-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+
+  @include onTablet {
+    width: 600px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px
+  }
+}

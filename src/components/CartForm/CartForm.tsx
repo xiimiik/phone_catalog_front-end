@@ -1,35 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../context/Context';
-import { Phone } from '../../types/Phone';
+import { ModalWindow } from '../Modal';
 import s from './CartForm.module.scss';
 
-type Props = {
-  cartItems: Phone[],
-  isLoading: boolean
-};
-
-export const CartForm: React.FC<Props> = ({ cartItems, isLoading }) => {
-  const { cartItemsIds, cartItemsNumber } = useContext(UserContext);
-  const total = cartItems.reduce((sum, item) => {
-    const index = cartItemsIds.findIndex(cartItem => cartItem === item.id);
-    const quantity = cartItemsNumber[index];
-
-    return sum + item.price * +quantity;
-  }, 0);
-  const quantity = cartItemsNumber
-    .reduce((sum, number) => sum + Number(number), 0);
+export const CartForm: React.FC = () => {
+  const { cartItems } = useContext(UserContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const total = cartItems
+    .reduce((sum, { quantity, price }) => sum + price * quantity, 0);
+  const totalQuantity = cartItems
+    .reduce((sum, { quantity }) => sum + quantity, 0);
+  const handleCheckout = () => {
+    setIsOpen(true);
+  };
 
   return (
-    <form className={s.cartForm}>
+    <form
+      className={s.cartForm}
+      onSubmit={handleCheckout}
+    >
+      <ModalWindow isOpen={isOpen} setIsOpen={setIsOpen} />
       <p className={s.cartForm__price}>
-        {isLoading ? (
-          '$----'
-        ) : (
-          `$${total}`
-        )}
+        {`$${total}`}
       </p>
       <div className={s.cartForm__items}>
-        {`Total for ${quantity} items`}
+        {`Total for ${totalQuantity} items`}
       </div>
       <button className={s.cartForm__button}>
         Checkout

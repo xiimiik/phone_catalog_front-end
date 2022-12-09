@@ -1,17 +1,11 @@
-import React from 'react';
-import { Phone } from '../../types/Phone';
+import React, { useContext } from 'react';
+import { UserContext } from '../../context/Context';
 import { CartItem } from '../CartItem';
 import s from './CartList.module.scss';
 
-type Props = {
-  cartItems: Phone[],
-  isDeleting: boolean,
-};
+export const CartList: React.FC = () => {
+  const { cartItems } = useContext(UserContext);
 
-export const CartList: React.FC<Props> = ({
-  cartItems,
-  isDeleting,
-}) => {
   return (
     <>
       <div className={s.cartList}>
@@ -19,7 +13,6 @@ export const CartList: React.FC<Props> = ({
           <CartItem
             key={phone.id}
             phone={phone}
-            isDeleting={isDeleting}
           />
         )))}
       </div>

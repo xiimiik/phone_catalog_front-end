@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </ul>
 
       <footer className={s.productCard__action}>
-        <ProductAction id={id} />
+        <ProductAction id={id} phone={phone} />
       </footer>
     </article>
   );

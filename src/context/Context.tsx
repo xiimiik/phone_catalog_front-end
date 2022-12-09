@@ -5,10 +5,8 @@ import { useStorage } from '../utils/useStorage';
 export const UserContext = React.createContext<UserContextI>({
   favouritesIds: [],
   setFavouritesIds: () => {},
-  cartItemsIds: [],
-  setCartItemsIds: () => {},
-  cartItemsNumber: [],
-  setCartItemsNumber: () => {},
+  cartItems: [],
+  setCartItems: () => {},
 });
 
 type Props = {
@@ -17,18 +15,13 @@ type Props = {
 
 export const UserContextProvider: React.FC<Props> = ({ children }) => {
   const [favouritesIds, setFavouritesIds] = useStorage([], 'Favorite');
-  const [cartItemsIds, setCartItemsIds] = useStorage([], 'Cart');
-  const [
-    cartItemsNumber, setCartItemsNumber,
-  ] = useStorage([], 'CartItemsQuantity');
+  const [cartItems, setCartItems] = useStorage([], 'Cart');
 
   const contextValues = {
     favouritesIds,
     setFavouritesIds,
-    cartItemsIds,
-    setCartItemsIds,
-    cartItemsNumber,
-    setCartItemsNumber,
+    cartItems,
+    setCartItems,
   };
 
   return (
