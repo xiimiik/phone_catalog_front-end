@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import s from './Pagination.module.scss';
 
@@ -29,6 +29,10 @@ export const Pagination: React.FC<Props> = ({
   };
 
   const lastPage = getPages(phonesLength).length;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [currentPage]);
 
   if (currentPage > getPages(phonesLength).length
     && getPages(phonesLength).length !== 0) {

@@ -4,6 +4,8 @@ import {
   useCallback,
 } from 'react';
 
+import { useSearchParams } from 'react-router-dom';
+
 import { Phone } from '../../types/Phone';
 import { getPhones, getPhonesWithLimit } from '../../api/phones';
 import { ProductCard } from '../ProductCard';
@@ -20,8 +22,13 @@ export const Catalog = () => {
   const [phonesLength, setPhonesLength] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [selectLimit, setSelectLimit] = useState(optionsCount[2].value);
-  const [selectSort, setSelectSort] = useState(optionsSorting[0].value);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sorting = searchParams.get('sorting') || 'default';
+  const quantity = searchParams.get('quantity') || '16';
+
+  const [selectLimit, setSelectLimit] = useState(sorting);
+  const [selectSort, setSelectSort] = useState(quantity);
   const [selectOffset, setSelectOffset] = useState(1);
 
   const [orderSort, setOrderSort] = useState('');
@@ -57,7 +64,37 @@ export const Catalog = () => {
     setDirSort(dir);
   };
 
+  const setSelect = (sort: string) => {
+    switch (sort) {
+      case 'ascPrice':
+        setSorting('price', 'asc');
+        break;
+
+      case 'descPrice':
+        setSorting('price', 'desc');
+        break;
+
+      case 'ascYear':
+        setSorting('new', 'asc');
+        break;
+
+      case 'descYear':
+        setSorting('new', 'desc');
+        break;
+
+      case 'default':
+      default:
+        setSorting('', '');
+    }
+  };
+
   useEffect(() => {
+    setSelect(selectSort);
+  }, [selectSort]);
+
+  useEffect(() => {
+    setSelect(selectSort);
+
     getPhonesFromServer(
       selectOffset,
       selectLimit,
@@ -92,7 +129,8 @@ export const Catalog = () => {
         selectSort={selectSort}
         setSelectLimit={setSelectLimit}
         setSelectSort={setSelectSort}
-        setSorting={setSorting}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
 
       {isLoading ? (
