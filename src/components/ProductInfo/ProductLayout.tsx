@@ -45,7 +45,7 @@ export const ProductLayout: React.FC<Props> = ({
         breads={[
           { title: 'home', path: '/' },
           { title: 'Phones', path: '/phones' },
-          { title: `${name} (iMT9G2FS/A)`, path: '/item' },
+          { title: `${name}`, path: '/item' },
         ]}
       />
 
@@ -59,8 +59,6 @@ export const ProductLayout: React.FC<Props> = ({
         {' '}
         iMT9G2FS/A
       </h1>
-
-      fghjfhjh
 
       <div className={s.product__promo}>
         <div className={s.product__gallery}>

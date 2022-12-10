@@ -21,7 +21,6 @@ import { Order } from '../../types/Order';
 
 import { Breadcrumbs } from '../Breadcrumbs';
 
-
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
   const [phonesLength, setPhonesLength] = useState(0);

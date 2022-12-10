@@ -22,7 +22,7 @@ export const transformColor = (color: string) => {
       return '#e3e3db';
 
     case 'gold':
-      return '#d4d2b9';
+      return '#F7D5BA';
 
     case 'black':
       return '#1e201f';
