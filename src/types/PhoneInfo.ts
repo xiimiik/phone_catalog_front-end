@@ -3,5 +3,6 @@ import { PhoneFullInfo } from './PhoneFullInfo';
 
 export interface PhoneInfo {
   phone: PhoneFullInfo,
+  id: string,
   similar: Phone[],
 }
