@@ -31,6 +31,10 @@
     &:focus {
       outline: none;
     }
+
+    &:hover::after {
+      border-color: $black-color;
+    }
   }
 
   :global(.swiper-button-prev::after),
@@ -48,6 +52,8 @@
     line-height: $slider-button-width;
     color: $black-color;
     text-align: center;
+
+    transition: border-color 0.2s ease;
 
     @include onTablet {
       transform: translateY(#{-($slider-tab-height / 1.7)});

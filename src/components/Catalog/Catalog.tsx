@@ -7,7 +7,7 @@ import {
 import { useSearchParams } from 'react-router-dom';
 
 import { Phone } from '../../types/Phone';
-import { getPhones, getPhonesWithLimit } from '../../api/phones';
+import { getPhonesWithLimit } from '../../api/phones';
 import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { SelectParams } from '../SelectParams';
@@ -16,7 +16,11 @@ import { Pagination } from '../Pagination';
 import s from './Catalog.module.scss';
 
 import { optionsSorting, optionsCount } from '../../utils/optionsParams';
+
 import { Order } from '../../types/Order';
+
+import { Breadcrumbs } from '../Breadcrumbs';
+
 
 export const Catalog = () => {
   const [phones, setPhones] = useState<Phone[]>();
@@ -74,15 +78,12 @@ export const Catalog = () => {
     ) => {
       try {
         setIsLoading(true);
-        const length = await getPhones();
 
         const phonesFromServer
           = await getPhonesWithLimit(offset, limit, order, dir);
 
-        setIsLoading(true);
-
         setPhones(phonesFromServer.edges);
-        setPhonesLength(length.count);
+        setPhonesLength(phonesFromServer.count);
       } catch (error: any) {
         throw new Error(error.message);
       } finally {
@@ -109,15 +110,6 @@ export const Catalog = () => {
       orderSort,
       dirSort,
     );
-  }, []);
-
-  useEffect(() => {
-    getPhonesFromServer(
-      Number(selectOffset),
-      selectLimit,
-      orderSort,
-      dirSort,
-    );
   }, [selectLimit, selectOffset, orderSort, dirSort]);
 
   useEffect(() => {
@@ -129,6 +121,12 @@ export const Catalog = () => {
 
   return (
     <div className={s.catalog}>
+      <Breadcrumbs
+        breads={[
+          { title: 'home', path: '/' },
+          { title: 'Phones', path: '/phones' },
+        ]}
+      />
       <h1 className={s.catalog__title}>Mobile phones</h1>
 
       <div className={s.catalog__count}>
