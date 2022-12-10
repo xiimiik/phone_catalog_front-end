@@ -12,7 +12,10 @@ type Props = {
   phoneId: string;
 };
 
-export const ProductLayout: React.FC<Props> = ({ phone, phoneId }) => {
+export const ProductLayout: React.FC<Props> = ({
+  phone,
+  phoneId,
+}) => {
   const {
     name,
     capacityAvailable,

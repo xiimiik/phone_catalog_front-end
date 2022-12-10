@@ -97,6 +97,7 @@ export const Catalog = () => {
 
   useEffect(() => {
     setSelect(sorting);
+
     searchParams.set('sorting', optionsSorting[0].value);
     searchParams.set('quantity', optionsCount[2].value);
     searchParams.set('page', '1');
