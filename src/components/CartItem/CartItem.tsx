@@ -1,88 +1,72 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
 import s from './CartItem.module.scss';
 
 import btn from '../../assets/img/ButtonDelete.svg';
 import minus from '../../assets/img/Minus.svg';
 import plus from '../../assets/img/Plus.svg';
-import { Phone } from '../../types/Phone';
 import { UserContext } from '../../context/Context';
+import { PhoneWithQuantity } from '../../types/PhoneWithQuantity';
 
 type Props = {
-  phone: Phone,
-  isDeleting: boolean;
+  phone: PhoneWithQuantity,
 };
 
-export const CartItem: React.FC<Props> = ({ phone, isDeleting }) => {
+enum Operation {
+  Increment = 1,
+  Decrement = -1,
+}
+
+export const CartItem: React.FC<Props> = ({ phone }) => {
   const {
     id,
     phoneId,
     image,
     name,
     price,
+    quantity,
   } = phone;
-  const {
-    cartItemsIds,
-    setCartItemsIds,
-    cartItemsNumber,
-    setCartItemsNumber,
-  } = useContext(UserContext);
-  const index = cartItemsIds.findIndex(itemId => itemId === id);
-  const [idToDelete, setIdToDelete] = useState('0');
+  const { cartItems, setCartItems } = useContext(UserContext);
+  const index = cartItems.findIndex(item => item.id === id);
 
   const handleRemoveButtonClick = () => {
-    setIdToDelete(id);
+    if (index > -1) {
+      const filteredCartItems = cartItems.filter((_item, i) => (
+        i !== index
+      ));
+
+      setCartItems(filteredCartItems);
+    }
+  };
+
+  const changeQuantity = (operation: Operation) => {
+    const newCartItems = [...cartItems];
+    const itemIndex = cartItems.findIndex(item => item.id === id);
 
     if (index > -1) {
-      const filteredCartItemsIds = cartItemsIds.filter((_itemId, i) => (
-        i !== index
-      ));
-      const filteredCartItemsNumber = cartItemsNumber.filter((_itemId, i) => (
-        i !== index
-      ));
+      const newQuantity = cartItems[itemIndex].quantity + operation;
+      const updatedItem = {
+        ...cartItems[itemIndex],
+        quantity: newQuantity >= 0 ? newQuantity : 0,
+      };
 
-      setCartItemsIds(filteredCartItemsIds);
-      setCartItemsNumber(filteredCartItemsNumber);
+      newCartItems.splice(index, 1, updatedItem);
     }
+
+    setCartItems(newCartItems);
   };
 
   const addOne = () => {
-    const newCartItemsNumber = [...cartItemsNumber];
-
-    if (index > -1) {
-      const newNumber = +cartItemsNumber[index] + 1;
-
-      newCartItemsNumber.splice(index, 1, newNumber.toString());
-    }
-
-    setCartItemsNumber(newCartItemsNumber);
+    changeQuantity(Operation.Increment);
   };
 
   const removeOne = () => {
-    const newCartItemsNumber = [...cartItemsNumber];
-
-    if (index > -1) {
-      if (+cartItemsNumber[index] > 0) {
-        const newNumber = +cartItemsNumber[index] - 1;
-
-        newCartItemsNumber.splice(index, 1, newNumber.toString());
-      }
-    }
-
-    setCartItemsNumber(newCartItemsNumber);
+    changeQuantity(Operation.Decrement);
   };
 
   return (
     <article className={s.cartItem}>
-      {isDeleting && idToDelete === id && (
-        <div className={s.cartItem__loader} />
-      )}
-
-      <div className={cn(s.cartItem__content, {
-        [s.cartItem__content__opacity_50]: isDeleting && idToDelete === id,
-      })}
-      >
+      <div className={s.cartItem__content}>
         <div className={s.cartItem__info}>
           <button
             onClick={handleRemoveButtonClick}
@@ -114,7 +98,7 @@ export const CartItem: React.FC<Props> = ({ phone, isDeleting }) => {
             >
               <img src={minus} alt="Minus button" />
             </button>
-            <p>{cartItemsNumber[index]}</p>
+            <p>{quantity}</p>
             <button
               onClick={addOne}
               className={s.cartItem__button}

@@ -2,10 +2,12 @@
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { ProductControls } from '../ProductControls';
 import { ProductAction } from '../ProductAction';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 import { Description, PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 import s from './ProductLayout.module.scss';
+import img from '../../assets/img/LeftArrow.svg';
 
 type Props = {
   phone: PhoneFullInfo;
@@ -36,11 +38,26 @@ export const ProductLayout: React.FC<Props> = ({ phone, phoneId }) => {
 
   return (
     <div className={s.product}>
+      <Breadcrumbs
+        breads={[
+          { title: 'home', path: '/' },
+          { title: 'Phones', path: '/phones' },
+          { title: `${name} (iMT9G2FS/A)`, path: '/item' },
+        ]}
+      />
+
+      <a href="/" className={s.product__back_btn}>
+        <img src={img} alt="arrow" />
+        Back
+      </a>
+
       <h1 className={s.product__title}>
         {name}
         {' '}
-        (iMT9G2FS/A)
+        iMT9G2FS/A
       </h1>
+
+      fghjfhjh
 
       <div className={s.product__promo}>
         <div className={s.product__gallery}>
