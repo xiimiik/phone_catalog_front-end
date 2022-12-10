@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 import Select from 'react-select';
 
@@ -12,9 +12,10 @@ type Props = {
   optionsCount: SelectOption[],
   selectLimit: string,
   selectSort: string,
-  setSelectLimit: (limit: string) => void,
   setSelectSort: (limit: string) => void,
-  setSorting: (order: string, dir: string) => void,
+  setSelectLimit: (limit: string) => void,
+  searchParams: URLSearchParams,
+  setSearchParams: (search: URLSearchParams) => void,
 };
 
 export const SelectParams: React.FC<Props> = ({
@@ -24,60 +25,34 @@ export const SelectParams: React.FC<Props> = ({
   setSelectLimit,
   selectSort,
   setSelectSort,
-  setSorting,
+  searchParams,
+  setSearchParams,
 }) => {
-  const [selectSorting, setSelectSorting] = useState(selectSort);
-  const [selectCount, setSelectCount] = useState(selectLimit);
-
-  const setSelect = (sorting: string) => {
-    switch (sorting) {
-      case 'ascPrice':
-        setSorting('price', 'asc');
-        break;
-
-      case 'descPrice':
-        setSorting('price', 'desc');
-        break;
-
-      case 'ascYear':
-        setSorting('new', 'asc');
-        break;
-
-      case 'descYear':
-        setSorting('new', 'desc');
-        break;
-
-      case 'default':
-      default:
-        setSorting('', '');
-    }
-  };
-
-  useEffect(() => {
-    setSelect(selectSorting);
-  }, [selectSorting]);
-
   const getValueSorting = useCallback(() => {
-    return selectSorting
-      ? optionsSorting.find(sorting => sorting.value === selectSorting)
+    return selectSort
+      ? optionsSorting.find(sort => sort.value === selectSort)
       : '';
-  }, [selectSorting]);
+  }, [selectSort]);
 
   const handleChangeSorting = useCallback((newValue: any) => {
-    setSelectSorting(newValue.value);
     setSelectSort(newValue.value);
-  }, [selectSorting]);
+
+    searchParams.set('sorting', newValue.value);
+    setSearchParams(searchParams);
+  }, [selectSort]);
 
   const getValueCount = useCallback(() => {
-    return selectCount
-      ? optionsCount.find(count => count.value === selectCount)
+    return selectLimit
+      ? optionsCount.find(count => count.value === selectLimit)
       : 0;
-  }, [selectCount]);
+  }, [selectLimit]);
 
   const handleChangeCount = useCallback((newValue: any) => {
-    setSelectCount(newValue.value);
     setSelectLimit(newValue.value);
-  }, [selectCount]);
+
+    searchParams.set('quantity', newValue.value);
+    setSearchParams(searchParams);
+  }, [selectLimit]);
 
   return (
     <ul className={s.select__list}>

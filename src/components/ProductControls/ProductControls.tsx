@@ -1,11 +1,15 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-closing-tag-location */
-import { useMemo } from 'react';
+import {
+  // useMemo,
+  useCallback,
+} from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import cn from 'classnames';
 import s from './ProductControls.module.scss';
 
-import { transformColor } from '../../utils/transformColor';
+// import { transformColor } from '../../utils/transformColor';
 
 type Props = {
   capacityAvailable: string[],
@@ -20,11 +24,27 @@ export const ProductControls: React.FC<Props> = ({
   colorsAvailable,
   color,
 }) => {
-  const transformedColors = useMemo(() => colorsAvailable.map(currentColor => {
-    return transformColor(currentColor);
-  }), [colorsAvailable]);
+  const location = useLocation();
+  const currentPhoneId = location.pathname
+    .slice(location.pathname.lastIndexOf('/') + 1);
+  const transformedLink = currentPhoneId.split('-');
 
-  const transformedColor = useMemo(() => transformColor(color), [color]);
+  // const transformedColors = useMemo(() => colorsAvailable.map(currentColor => {
+  //   return transformColor(currentColor);
+  // }), [colorsAvailable]);
+
+  // const transformedColor = useMemo(() => transformColor(color), [color]);
+
+  const transformCaracityLink = useCallback((param: string) => {
+    const capacityLink = transformedLink[transformedLink.length - 2]
+      .replace(/\d{2,3}/g, param).replace(/[GB]/g, '');
+
+    return `${transformedLink.slice(0, -2).join('-')}-${capacityLink}-${transformedLink.slice(-1)}`;
+  }, []);
+
+  const transformColorLink = useCallback((param: string) => {
+    return `${transformedLink.slice(0, -1).join('-')}-${param}`;
+  }, []);
 
   return (
     <div className={s.controls}>
@@ -35,19 +55,20 @@ export const ProductControls: React.FC<Props> = ({
         </h4>
 
         <ul className={s.controls__params}>
-          {transformedColors.map((currentColor: string, i) => (
+          {colorsAvailable.map((currentColor: string, i) => (
             <li key={i} className={s.controls__params_item}>
-              <div
+              <Link
+                to={`/phones/${transformColorLink(currentColor)}`}
                 className={cn(s.controls__params_item_wrap, {
                   [s.controls__params_item_wrap_active]:
-                  currentColor === transformedColor,
+                  currentColor === color,
                 })}
               >
                 <div
                   className={s.controls__params_item_inner}
                   style={{ backgroundColor: `${currentColor}` }}
                 > </div>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -60,15 +81,19 @@ export const ProductControls: React.FC<Props> = ({
 
         <ul className={s.controls__params}>
           {capacityAvailable.map((currentCatacity, i) => (
-            <li key={i} className={s.controls__params_item}>
-              <div
+            <li
+              key={i}
+              className={s.controls__params_item}
+            >
+              <Link
+                to={`/phones/${transformCaracityLink(currentCatacity)}`}
                 className={cn(s.controls__params_capacity, {
                   [s.controls__params_capacity_active]:
                   currentCatacity === capacity,
                 })}
               >
                 {currentCatacity}
-              </div>
+              </Link>
             </li>
           ))}
         </ul>
