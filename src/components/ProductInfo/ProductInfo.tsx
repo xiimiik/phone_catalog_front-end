@@ -22,6 +22,7 @@ export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
   const [phone, setPhone] = useState<PhoneInfo | null>(null);
   const [currentPhone, setCurrentPhone] = useState<PhoneFullInfo>();
   const [similarPhones, setSimilarPhones] = useState<Phone[]>();
+  const [currentPhoneId, setCurrentPhoneId] = useState('');
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(location.pathname);
 
@@ -46,6 +47,7 @@ export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
     if (phone) {
       setCurrentPhone(phone.phone);
       setSimilarPhones(phone.similar);
+      setCurrentPhoneId(phone.id);
     }
   }, [phone]);
 
@@ -67,7 +69,7 @@ export const ProductInfo: React.FC<Props> = ({ phoneId }) => {
         <>
           <ProductLayout
             phone={currentPhone}
-            phoneId={similarPhones[0].id}
+            phoneId={currentPhoneId}
           />
           <ProductsSlider
             products={similarPhones}

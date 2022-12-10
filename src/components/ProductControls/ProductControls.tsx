@@ -9,7 +9,7 @@ import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import s from './ProductControls.module.scss';
 
-// import { transformColor } from '../../utils/transformColor';
+import { transformColor } from '../../utils/transformColor';
 
 type Props = {
   capacityAvailable: string[],
@@ -28,12 +28,6 @@ export const ProductControls: React.FC<Props> = ({
   const currentPhoneId = location.pathname
     .slice(location.pathname.lastIndexOf('/') + 1);
   const transformedLink = currentPhoneId.split('-');
-
-  // const transformedColors = useMemo(() => colorsAvailable.map(currentColor => {
-  //   return transformColor(currentColor);
-  // }), [colorsAvailable]);
-
-  // const transformedColor = useMemo(() => transformColor(color), [color]);
 
   const transformCaracityLink = useCallback((param: string) => {
     const capacityLink = transformedLink[transformedLink.length - 2]
@@ -66,7 +60,7 @@ export const ProductControls: React.FC<Props> = ({
               >
                 <div
                   className={s.controls__params_item_inner}
-                  style={{ backgroundColor: `${currentColor}` }}
+                  style={{ backgroundColor: `${transformColor(currentColor)}` }}
                 > </div>
               </Link>
             </li>
