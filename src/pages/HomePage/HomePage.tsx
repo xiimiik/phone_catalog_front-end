@@ -70,16 +70,14 @@ export const HomePage = () => {
         </PageSection>
       </Container>
 
-      <PageSection>
-        {isLoading
-          ? <Loader />
-          : (
-            <ProductsSlider<Phone>
-              products={discountPhones}
-              title="Hot prices"
-            />
-          )}
-      </PageSection>
+      {isLoading
+        ? <Loader />
+        : (
+          <ProductsSlider<Phone>
+            products={discountPhones}
+            title="Hot prices"
+          />
+        )}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartForm } from '../CartForm';
 import { CartList } from '../CartList';
 
@@ -10,13 +11,17 @@ import { EmptyChosen } from '../EmptyChosen';
 export const Cart: React.FC = () => {
   const { cartItems } = useContext(UserContext);
   const isCartEmpty = cartItems.length === 0;
+  const navigate = useNavigate();
 
   return (
     <div className={s.cart}>
-      <a href="/" className={s.cart__button}>
+      <button
+        onClick={() => navigate(-1)}
+        className={s.cart__button}
+      >
         <img src={img} alt="arrow" />
         Back
-      </a>
+      </button>
       <h1 className={s.cart__title}>Cart</h1>
 
       <div className={s.cart__content}>
