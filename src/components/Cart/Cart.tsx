@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartForm } from '../CartForm';
 import { CartList } from '../CartList';
 
@@ -20,6 +21,7 @@ export const Cart: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [cartItems, setCartItems] = useState<Phone[]>([]);
   const isCartEmpty = cartItemsIds.length === 0;
+  const navigate = useNavigate();
 
   const getPhonesFromServer = useCallback(
     async () => {
@@ -49,10 +51,13 @@ export const Cart: React.FC = () => {
 
   return (
     <div className={s.cart}>
-      <a href="/" className={s.cart__button}>
+      <button
+        onClick={() => navigate(-1)}
+        className={s.cart__button}
+      >
         <img src={img} alt="arrow" />
         Back
-      </a>
+      </button>
       <h1 className={s.cart__title}>Cart</h1>
 
       <div className={s.cart__content}>
