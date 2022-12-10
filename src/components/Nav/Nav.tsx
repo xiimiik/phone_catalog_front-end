@@ -18,8 +18,9 @@ const navLinks = [
 
 export const Nav: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState(false);
-  const { favouritesIds, cartItemsIds } = useContext(UserContext);
+  const { favouritesIds, cartItems } = useContext(UserContext);
 
+  const cartItemsIds = cartItems.map(item => item.id);
   const onOpenMenu = () => {
     setActiveMenu(active => !active);
     document.body.style.overflow = 'hidden';
