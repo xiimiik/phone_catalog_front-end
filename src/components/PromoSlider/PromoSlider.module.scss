@@ -71,6 +71,11 @@
       line-height: $tab-header-swiper-height;
     }
 
+    @include onLaptop {
+      height: $lap-header-swiper-height;
+      line-height: $lap-header-swiper-height;
+    }
+
     @include onDesktop {
       height: $desk-header-swiper-height;
       line-height: $desk-header-swiper-height;
@@ -101,6 +106,10 @@
       padding-top: 0;
       height: $tab-header-swiper-height;
       border-radius: $radius;
+    }
+
+    @include onLaptop {
+      height: $lap-header-swiper-height;
     }
 
     @include onDesktop {

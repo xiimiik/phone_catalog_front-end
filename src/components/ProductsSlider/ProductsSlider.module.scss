@@ -91,10 +91,10 @@
   }
 
   &__swiper {
-    height: $slider-mob-height;
+    height: #{$slider-mob-height + 30};
 
     @include onTablet {
-      height: $slider-tab-height;
+      height: #{$slider-tab-height + 20};
     }
 
     @include onDesktop {
@@ -103,14 +103,15 @@
   }
 
   &__item {
-    width: 216px !important;
+    width: 230px !important;
+    padding: 10px;
 
     @include onTablet {
-      width: 240px !important;
+      width: 250px !important;
     }
 
     @include onDesktop {
-      width: 270px !important;
+      width: 274px !important;
     }
   }
 }

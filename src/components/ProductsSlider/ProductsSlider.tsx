@@ -23,7 +23,7 @@ export const ProductsSlider = <T extends Phone>(
         navigation
         slidesPerView="auto"
         scrollbar={{ draggable: true }}
-        spaceBetween={16}
+        spaceBetween={8}
         className={s.slider__swiper}
       >
         {products.map(phone => (
