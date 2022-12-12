@@ -5,15 +5,16 @@ import { Favorite } from '../Favorite/Favorite';
 import s from './ProductAction.module.scss';
 
 type Props = {
-  id: string,
-  phone?: Phone,
+  currentPhone: Phone,
 };
 
-export const ProductAction: React.FC<Props> = ({ id, phone }) => {
+export const ProductAction: React.FC<Props> = ({ currentPhone }) => {
+  const { id } = currentPhone;
+
   return (
     <div className={s.action}>
       <div className={s.action__btn}>
-        <Button phone={phone} />
+        <Button phone={currentPhone} />
       </div>
 
       <div className={s.action__favorite}>

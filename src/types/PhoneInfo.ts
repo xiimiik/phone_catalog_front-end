@@ -3,6 +3,6 @@ import { PhoneFullInfo } from './PhoneFullInfo';
 
 export interface PhoneInfo {
   phone: PhoneFullInfo,
-  id: string,
+  currPhone: Phone,
   similar: Phone[],
 }
