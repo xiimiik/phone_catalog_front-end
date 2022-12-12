@@ -47,7 +47,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
       const newQuantity = cartItems[itemIndex].quantity + operation;
       const updatedItem = {
         ...cartItems[itemIndex],
-        quantity: newQuantity >= 0 ? newQuantity : 0,
+        quantity: newQuantity >= 1 ? newQuantity : 1,
       };
 
       newCartItems.splice(index, 1, updatedItem);

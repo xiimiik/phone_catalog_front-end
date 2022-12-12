@@ -8,15 +8,16 @@ import { Description, PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 import s from './ProductLayout.module.scss';
 import img from '../../assets/img/LeftArrow.svg';
+import { Phone } from '../../types/Phone';
 
 type Props = {
-  phone: PhoneFullInfo;
-  phoneId: string;
+  phoneFullInfo: PhoneFullInfo;
+  currentPhone: Phone;
 };
 
 export const ProductLayout: React.FC<Props> = ({
-  phone,
-  phoneId,
+  phoneFullInfo,
+  currentPhone,
 }) => {
   const {
     name,
@@ -35,7 +36,7 @@ export const ProductLayout: React.FC<Props> = ({
     camera,
     zoom,
     cell,
-  } = phone;
+  } = phoneFullInfo;
 
   const renderedCell = cell.map((item: string) => item).join(', ');
 
@@ -85,7 +86,7 @@ export const ProductLayout: React.FC<Props> = ({
           </div>
 
           <div className={s.product__action}>
-            <ProductAction id={phoneId} />
+            <ProductAction currentPhone={currentPhone} />
           </div>
 
           <ul className={s.product__params}>
