@@ -4,7 +4,7 @@
 React Application implemented according to [Figma design](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=15834%3A1506&t=8Gx4gvQGCEd8Y2K6-0)
 
 ## Technologies:
-- React.js (Functional Components, Hooks, Router, Context)
+- React.js (Functional Components, Hooks, Router, Context, LocalStorage)
 - TypeScript
 - REST API requests
 - HTML
