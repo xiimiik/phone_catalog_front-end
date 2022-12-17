@@ -30,6 +30,7 @@ export const ModalWindow: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       className={s.modal}
       contentLabel="Shopping Cart"
       onRequestClose={handleCloseButton}
+      ariaHideApp={false}
     >
       <div className={s.modal__header}>
         <h2 className={s.modal__title}>Shopping Cart</h2>

@@ -10,7 +10,8 @@ export const CartForm: React.FC = () => {
     .reduce((sum, { quantity, price }) => sum + price * quantity, 0);
   const totalQuantity = cartItems
     .reduce((sum, { quantity }) => sum + quantity, 0);
-  const handleCheckout = () => {
+  const handleCheckout = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsOpen(true);
   };
 
