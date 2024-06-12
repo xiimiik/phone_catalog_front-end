@@ -1,6 +1,8 @@
 # Phone Catalog Team Project
 - [DEMO LINK](https://fe-aug22-ta-y-take.github.io/phone_catalog_front-end)
 
+
+
 React Application implemented according to [Figma design](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=15834%3A1506&t=8Gx4gvQGCEd8Y2K6-0)
 
 ## Technologies:
